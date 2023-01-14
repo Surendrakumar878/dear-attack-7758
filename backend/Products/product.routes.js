@@ -1,0 +1,12 @@
+const express = require("express");
+const fileUpload = require("./fileupload");
+const adminMiddleware = require("../admin/admin.middleware");
+const router = express.Router();
+const productController = require("./products.controller");
+router.post("/add",adminMiddleware.checkAdmin, fileUpload.single("image"), productController.addProduct);
+router.get("/:id", productController.getOne);
+router.get("/all/product", productController.getAll);
+router.patch("/:id",adminMiddleware.checkAdmin, fileUpload.single("image"), productController.update);
+router.patch("/activate/:id",adminMiddleware.checkAdmin, productController.activateProduct);
+router.delete("/:id", productController.delete);
+module.exports = router;

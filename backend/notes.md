@@ -1,0 +1,2 @@
+- `npm i express nodemon mongoose bcrypt cors dotenv jsonwebtoken`
+- `https://rich-red-indri-tie.cyclic.app/`

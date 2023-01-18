@@ -28,7 +28,7 @@ const HomePage = () => {
           
           mt="20px"
         >
-          <GridItem w="100%" h="50">
+          <GridItem w="100%" h="40">
             <Image src="https://www.bigbasket.com/media/uploads/banner_images/hp_topstrip_m_251122_01.png" />
           </GridItem>
           <GridItem w="100%">

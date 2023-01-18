@@ -4,6 +4,7 @@ import PageRouter from './Router/pageRouter'
 import { Navbar } from './Components/navabar/Navbar';
 import { Footer } from './Components/footer/Footer';
 
+
 function App() {
   return (
     <div className="App">

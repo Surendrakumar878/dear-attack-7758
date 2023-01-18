@@ -13,18 +13,19 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import style from "./Home.css";
+import Slider from './Slider'
 
 const HomePage = () => {
   return (
     <Box>
-      <Box border="1px solid red" w="100%">
-        banner
+      <Box  w="100%">
+        <Slider/>
       </Box>
       <Box w="80%" margin="auto">
         <Grid
-          templateColumns="repeat(6, 1fr)"
+          templateColumns={{ md: "repeat(6, 1fr)", base: "repeat(2, 1fr)" }}
           gap={4}
-          border="1px solid red"
+          
           mt="20px"
         >
           <GridItem w="100%" h="50">
@@ -72,14 +73,14 @@ const HomePage = () => {
           </Box>
         </Box>
         <Grid
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{ md: "repeat(4, 1fr)", base: "repeat(2,1fr)" }}
           gap={4}
           border="1px solid red"
           mt="20px"
         >
           <GridItem
             w="100%"
-            h="200px"
+            h={{ md: "200px" }}
             border="1px solid #E1E1E1"
             _hover={{ boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
           >
@@ -133,7 +134,7 @@ const HomePage = () => {
           </Box>
         </Box>
         <Grid
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{ md: "repeat(4, 1fr)", base: "repeat(1,1fr)" }}
           gap={4}
           border="1px solid red"
           mt="20px"
@@ -182,7 +183,7 @@ const HomePage = () => {
           </Box>
         </Box>
         <Grid
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{ md: "repeat(4, 1fr)", base: "repeat(1,1fr)" }}
           gap={4}
           border="1px solid red"
           mt="20px"
@@ -192,6 +193,7 @@ const HomePage = () => {
             h="200px"
             border="1px solid #E1E1E1"
             _hover={{ boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+            mb={{ base: "20px" }}
           >
             <Image src="https://www.bigbasket.com/media/customPage/77880b23-0233-4fad-b54a-a93c998e0d20/7b298a48-7c3d-4120-a032-4d45c2a89673/eae9b0cd-6588-4f6c-9204-a9c0c578a38f/hp_dow-topoffersStorefront_m_480_251222_01.jpg" />
           </GridItem>
@@ -231,7 +233,7 @@ const HomePage = () => {
           </Box>
         </Box>
         <Grid
-          templateColumns="repeat(6, 1fr)"
+          templateColumns={{md:"repeat(6, 1fr)",base:"repeat(2, 1fr)"}}
           gap={4}
           border="1px solid red"
           mt="20px"
@@ -293,7 +295,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Grid templateColumns="repeat(6, 1fr)" gap={4} mt="20px">
+        <Grid templateColumns={{md:"repeat(6, 1fr)",base:"repeat(2, 1fr)"}} gap={4} mt="20px">
           <GridItem
             w="100%"
             h="100px"
@@ -347,10 +349,10 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Flex>
+        <Flex flexDirection={{base:"column",md:"row"}}>
           <Box
-            w="50%"
-            h="400px"
+            w={{md:"50%",base:"100%"}}
+            h={{md:"400px",base:"400px"}}
             border="1px solid #E1E1E1"
             _hover={{ boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
           >
@@ -359,7 +361,7 @@ const HomePage = () => {
               alt="cold"
             />
           </Box>
-          <Box w="50%" border="1px solid red" h="400px">
+          <Box w={{md:"50%",base:"100%"}} border="1px solid red" h="400px">
             <Grid templateColumns="repeat(2, 1fr)" gap={6}>
               <GridItem
                 w="100%"
@@ -408,7 +410,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Grid templateColumns="repeat(6, 1fr)" gap={4} mt="20px">
+        <Grid templateColumns={{md:"repeat(6, 1fr)",base:"repeat(2, 1fr)"}} gap={4} mt="20px">
           <GridItem
             w="100%"
             h="100px"
@@ -462,14 +464,14 @@ const HomePage = () => {
           </Box>
         </Box>
         <Grid
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{md:"repeat(4, 1fr)",base:"repeat(2, 1fr)"}}
           gap={4}
           border="1px solid red"
           mt="20px"
         >
           <GridItem
             w="100%"
-            h="200px"
+            h={{md:"200px"}}
             border="1px solid #E1E1E1"
             _hover={{ boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
           >
@@ -514,16 +516,16 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Flex>
+        <Flex flexDirection={{base:"column",md:"row"}}>
           <Box
-            w="50%"
-            h="400px"
+            w={{md:"50%",base:"100%"}}
+            h={{md:"400px",base:"400px"}}
             border="1px solid #E1E1E1"
             _hover={{ boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
           >
             <Image src="https://www.bigbasket.com/media/customPage/77880b23-0233-4fad-b54a-a93c998e0d20/7b298a48-7c3d-4120-a032-4d45c2a89673/41d73d99-69d4-4555-8613-348f40544f41/hpmakeup-mania-_beautyStorefront_m_251222_560x378_01.jpg" />
           </Box>
-          <Box w="50%" border="1px solid red" h="400px">
+          <Box w={{md:"50%",base:"100%"}} border="1px solid red" h="400px">
             <Grid templateColumns="repeat(2, 1fr)" gap={6}>
               <GridItem
                 w="100%"
@@ -572,7 +574,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Grid templateColumns="repeat(6, 1fr)" gap={4} mt="20px">
+        <Grid templateColumns={{md:"repeat(6, 1fr)",base:"repeat(2, 1fr)"}} gap={4} mt="20px">
           <GridItem
             w="100%"
             h="100px"
@@ -625,7 +627,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Grid templateColumns="repeat(6, 1fr)" gap={4} mt="20px">
+        <Grid templateColumns={{md:"repeat(6, 1fr)",base:"repeat(2, 1fr)"}} gap={4} mt="20px">
           <GridItem
             w="100%"
             h="140px"

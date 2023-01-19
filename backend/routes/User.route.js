@@ -7,7 +7,6 @@ const { addAdminId } = require("../middlewares/addAdminId.middleware");
 require('dotenv').config();
 
 const userRouter = express.Router();
-
 userRouter.use(addAdminId);
 
 userRouter.post("/login", async (req, res) => {
@@ -66,6 +65,18 @@ userRouter.get("/", async (req, res) => {
 });
 
 
+userRouter.delete("/deletemany", async (req, res) => {
+    try {
+        await UserModel.deleteMany();
+        res.send("All users deleted!");
+    }
+    catch (err) {
+        console.log(err);
+        res.send({ msg: "something went wrong" });
+    }
+});
+
+
 userRouter.patch("/update/:id", async (req, res) => {
     let id = req.params.id;
     let payload = req.body;
@@ -97,19 +108,26 @@ userRouter.use(Validator);
 
 userRouter.post("/admin/signup", async (req, res) => {
     const { username, email, password, adminID } = req.body;
+    const isAlready = await UserModel.findOne({ "email": email });
+
     try {
-        bcrypt.hash(password, 4, async (err, hash) => {
-            if (err) {
-                console.log(err);
-                res.send("Err");
-            }
-            else {
-                let user = new UserModel({ username, email, password: hash, adminID });
-                await user.save();
-                res.send("Admin Registered!");
-                console.log(user);
-            }
-        });
+        if (isAlready === null || isAlready.email !== email) {
+            bcrypt.hash(password, 4, async (err, hash) => {
+                if (err) {
+                    console.log(err);
+                    res.send("Err");
+                }
+                else {
+                    let user = new UserModel({ username, email, password: hash, adminID });
+                    await user.save();
+                    res.send("Admin Registered!");
+                    console.log(user);
+                }
+            });
+        }
+        else {
+            res.send("Admin already registered!");
+        }
     }
     catch (err) {
         res.send("Admin Registration Failed!");
@@ -120,19 +138,26 @@ userRouter.post("/admin/signup", async (req, res) => {
 
 userRouter.post("/user/signup", async (req, res) => {
     const { username, email, password } = req.body;
+    const isAlready = await UserModel.findOne({ "email": email });
+
     try {
-        bcrypt.hash(password, 4, async (err, hash) => {
-            if (err) {
-                console.log(err);
-                res.send("Err");
-            }
-            else {
-                let user = new UserModel({ username, email, password: hash });
-                await user.save();
-                res.send("User Registered!");
-                console.log(user);
-            }
-        });
+        if (isAlready === null || isAlready.email !== email) {
+            bcrypt.hash(password, 4, async (err, hash) => {
+                if (err) {
+                    console.log(err);
+                    res.send("Err");
+                }
+                else {
+                    let user = new UserModel({ username, email, password: hash });
+                    await user.save();
+                    res.send("User Registered!");
+                    console.log(user);
+                }
+            });
+        }
+        else {
+            res.send("User already registered!");
+        }
     }
     catch (err) {
         res.send("User Registration Failed!");

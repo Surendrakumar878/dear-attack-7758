@@ -3,16 +3,14 @@ import './App.css';
 import PageRouter from './Router/pageRouter'
 import { Navbar } from './Components/navabar/Navbar';
 import { Footer } from './Components/footer/Footer';
-import Products from './Components/Products';
 
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar/>
+      <Navbar/>
       <PageRouter/>
-    <Footer/> */}
-    <Products/>
+    <Footer/>
     </div>
   );
 }

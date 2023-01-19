@@ -1,0 +1,19 @@
+
+.adminHomeContainer{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    margin-top: 3%;
+}
+
+.adminHomeContainer > div:first-child{
+    width: 15%;
+}
+
+.admin_grid_container{
+    display: grid;
+    width: 80%;
+    margin: auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2% 3%;
+}

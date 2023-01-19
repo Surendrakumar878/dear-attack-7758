@@ -1,0 +1,25 @@
+.adminProductContainer{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.adminProductContainer > div:first-child{
+    width: 15%;
+    /* margin: auto; */
+}
+
+.adminProductContainer > div:last-child{
+    width: 80%;
+    margin: auto;
+}
+
+.admin_products_grid_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 0.1% 5%;
+}

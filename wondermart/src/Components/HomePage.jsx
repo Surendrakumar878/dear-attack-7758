@@ -14,10 +14,13 @@ import {
 import React, { useEffect, useState } from "react";
 import style from "./Home.css";
 import Slider from './Slider'
+import Imagecarousel from "./Imagecarousel.js"
 
 const HomePage = () => {
   return (
     <Box>
+      
+
       <Box  w="100%">
         <Slider/>
       </Box>
@@ -28,7 +31,7 @@ const HomePage = () => {
           
           mt="20px"
         >
-          <GridItem w="100%" h="40">
+          <GridItem w="100%" h="50">
             <Image src="https://www.bigbasket.com/media/uploads/banner_images/hp_topstrip_m_251122_01.png" />
           </GridItem>
           <GridItem w="100%">
@@ -59,6 +62,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
+        <Imagecarousel/>
 
         <Box
           borderBottom="1px solid #DEDEDE"

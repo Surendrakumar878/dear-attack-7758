@@ -1,4 +1,5 @@
-import { Box, Center, Flex, Image, Input, Text } from "@chakra-ui/react";
+import { Box, Center, Image, Input, Text } from "@chakra-ui/react";
+import { Button } from "bootstrap";
 import React from "react";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
 export const Navbar = () => {
@@ -45,10 +46,12 @@ export const Navbar = () => {
             </Center>{" "}
           </Box>
         </Box>
+
+        {/* second Navbar */}
+
         <Box display="flex" w={"100%"}>
           <Box w="20%" border="1px solid blue">
-            {" "}
-            <Image w="100%" h="20px" src="assets/logo/logo1.png" alt="" />{" "}
+           <Button> shop By category</Button>tt
           </Box>
           <Box w="60%" border="1px solid green" borderRadius={"8px"}>
             <Box display={"flex"} w="100%" p="10px">

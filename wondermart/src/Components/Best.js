@@ -1,40 +1,36 @@
-import React,{useState} from "react";
+import React from "react";
 import Mycard from "./Mycard.js";
 import "./Imagecarousal.css";
 let arr = [
   {
-    url: "https://www.bigbasket.com/media/uploads/p/m/228899_3-amul-spray-infant-milk-foodsubstitute.jpg?tr=w-1920,q=80",
-    brand: "Amul",
+    url: "https://www.bigbasket.com/media/uploads/p/m/10000148_30-fresho-onion.jpg?tr=w-1920,q=80",
+    brand: "Fresho",
     detail:
-      "Spray Infant Milk Food/Substitute, Made by Spray-Drying Process MilkButterBread  ",
-    cost: "₹430",
-    kg:"1 kg-Pouch",
-    rating:"725 Ratings"
+      "Onion most widely cultivated species of the genus Allium.known as a hidden . ",
+    cost: "₹31",
+    kg:"1 kg"
   },
   {
-    url: "https://www.bigbasket.com/media/uploads/p/m/20004207_8-johnsons-baby-baby-soap-blossoms.jpg?tr=w-1920,q=80",
-    brand: "Johnson's baby",
-    detail: "Baby Soap - Blossoms  JOHNSON'S® products are designed for baby's delicate skin ",
-    cost: "₹65.96",
-    kg:"75g",
-    rating:"5 Ratings"
+    url: "https://www.bigbasket.com/media/uploads/p/m/10000097_19-fresho-coriander-leaves.jpg?tr=w-1920,q=80",
+    brand: "Fresho",
+    detail: "Coriander leaves are rich in Vitamin C and Vitamin E and both these nutrients ",
+    cost: "₹11.5",
+    kg:"100g"
   },
   {
-    url: "https://www.bigbasket.com/media/uploads/p/m/40020805_4-himalaya-baby-shampoo-gentle-baby.jpg?tr=w-1920,q=80",
-    brand: "Himalaya Baby",
-    detail: "Shampoo - Gentle Baby Himalaya Anti-Hair Fall Shampoo is enriched with the goodness of Bhringraj",
-    cost: "₹240.5",
-    kg:"400ml-Bottle",
-    rating:"15 Ratings"
+    url: "https://www.bigbasket.com/media/uploads/p/m/10000404_18-bb-royal-rice-raw-sona-masoori-12-17-months-old.jpg?tr=w-1920,q=80",
+    brand: "BB Royal",
+    detail: "Rice/Biyyam - Raw, Sona Masoori, 12-17 Months Old Rice/Biyyam - Raw, Sona.",
+    cost: "₹510",
+    kg:"10 kg-Bag"
   },
   {
-    url: "https://www.bigbasket.com/media/uploads/p/m/40085808_10-nestle-ceregrow-baby-cereal-multigrain-with-milk-fruits-from-2-5-years-rich-in-iron.jpg?tr=w-1920,q=80",
-    brand: "Nestle ",
+    url: "https://www.bigbasket.com/media/uploads/p/m/10000144_13-fresho-ladies-finger.jpg?tr=w-1920,q=80",
+    brand: "Fresho ",
     detail:
-      "Ceregrow Multigrain Cereal with Milk & Fruits - From 2-5 Years, Rich in Iron, High in Protein Box",
-    cost: "₹300.5",
-    kg:"300g-Box",
-    rating:"1488 Ratings"
+      " ladies finger, bhindi is a type of green vegetable, long finger like, having a small tip at the .",
+    cost: "₹39",
+    kg:"500 g"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40102625_2-mamaearth-baby-shampoo-gentle-cleansing-0-5-years.jpg?tr=w-1920,q=80",
@@ -42,8 +38,7 @@ let arr = [
     detail:
       "Baby Shampoo - Gentle Cleansing, 0-5 years made using safe, pure, gentle, natural,and toxin-free ",
     cost: "₹179",
-    kg:"200ml",
-    rating:"251 Ratings"
+    kg:"200ml"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40110176_7-himalaya-baby-baby-soap-gentle-4x75-gm.jpg?tr=w-1920,q=80",
@@ -51,8 +46,7 @@ let arr = [
     detail:
       "Baby Soap - Gentle  4X75 Gm The powerful oils of Neem and Turmeric, which are known for their antibacterial",
     cost: "₹154.6",
-    kg:"300g-Buy 3 Get 1 Free",
-    rating:"1036 Ratings"
+    kg:"300g-Buy 3 Get 1 Free"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40113202_3-sebamed-baby-cleansing-bar.jpg?tr=w-1920,q=80",
@@ -60,8 +54,7 @@ let arr = [
     detail:
       "Sebamed Baby Cleansing Bar |Ph 5.5 | With Panthenol|No tears & Soap Free bar| For Delicate skin",
     cost: "₹361.5",
-    kg:"150g",
-    rating:"119 Ratings"
+    kg:"150g"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40129677_9-pampers-diaper-pants-extra-large.jpg?tr=w-1920,q=80",
@@ -69,14 +62,12 @@ let arr = [
     detail:
       "Ceregrow Multigrain Cereal with Milk & Fruits - From 2-5 Years, Rich in Iron, High in Protein Box",
     cost: "₹869",
-    kg:"56pcs",
-    rating:"61 Ratings"
+    kg:"56pcs"
   },
 ];
 
-const Imagecarousel = () => {
+const Best = () => {
   let box = document.querySelector(".product-container");
-  const [changes,setChanges]=useState(false)
 
   const btnpressprev = () => {
     console.log(box.clientWidth);
@@ -86,10 +77,7 @@ const Imagecarousel = () => {
   };
 
   const btnpressnext = () => {
-    setChanges(true)
-    // console.log("kk", box.scrollLeft);
-    // box.clientWidth=0
-    
+    console.log("kk", box.scrollLeft);
     box.scrollLeft = box.scrollLeft + box.clientWidth;
     console.log(box.scrollLeft);
   };
@@ -117,11 +105,11 @@ const Imagecarousel = () => {
                 <Mycard cardno='12' />
                 <Mycard cardno='13' /> */}
         {arr.map((ele) => (
-          <Mycard cardimg={ele.url} cardbrand={ele.brand} carddetail={ele.detail} cardcost={ele.cost} selectkg={ele.kg} rating={ele.rating} />
+          <Mycard cardimg={ele.url} cardbrand={ele.brand} carddetail={ele.detail} cardcost={ele.cost} selectkg={ele.kg} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Imagecarousel;
+export default Best;

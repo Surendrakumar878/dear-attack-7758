@@ -46,7 +46,7 @@ export const Footer = () => {
           </Box>
         </Box>
         <Box w="32%" pl="100px">
-          <Image src="https://i.ibb.co/gM7mb15/imageedit-2-2956265302.png" h="100px" w="200px" borderRadius="20px" />
+          <Image src="https://i.ibb.co/gM7mb15/imageedit-2-2956265302.png" h="100px" w="200px" borderRadius="20px" mb="20px" />
           <Box display="flex" gap="30px">
             <Image
               src="https://cdn-icons-png.flaticon.com/128/733/733547.png"
@@ -73,7 +73,7 @@ export const Footer = () => {
               h="30px"
             />
           </Box>
-          <Text color="white">Vendor Connect</Text>
+          <Text color="white" mt="20px">Vendor Connect</Text>
         </Box>
       </Box>
       <Box pl="200px" pr="100px" lineHeight="30px" borderBottom="1px solid red">
@@ -192,11 +192,35 @@ export const Footer = () => {
       >
         <Box w="20%" pl="100px" pt="30px">
           <Box color="white" lineHeight="30px">
-            <Text>Bigbasket</Text>
-            <Text>About Us</Text>
-            <Text>In News</Text>
-            <Text>Green bigbasket</Text>
-            <Text>Privacy Policy</Text>
+            <Text>Popular Categories</Text>
+            <Text>Washing Powders</Text>
+            <Text>Tea</Text>
+            <Text>Other Vegetables</Text>
+            <Text>Shampoo</Text>
+          </Box>
+        </Box>
+        <Box w="20%" pt="30px" pl="100px">
+          <Box color="white" textAlign="left">
+            <Text>Raw Rice</Text>
+            <Text>Liquid Soaps & Bars</Text>
+            <Text>Whole Spices</Text>
+            <Text> Cut Fruits & Vegetables</Text>
+            <Text>bb Wallet T&Cs</Text>
+            <Text>Vendor Connect</Text>
+          </Box>
+        </Box>
+        <Box w="20%" pt="30px" pl="100px">
+          <Box color="white" textAlign="left">
+            <Text>
+Sunflower Oils</Text>
+            <Text>
+Health Drinks</Text>
+            <Text>Toothpaste</Text>
+            <Text>
+Glucose, Marie & Milk Biscui</Text>
+            <Text>bb Wallet T&Cs</Text>
+            <Text>
+Chocolate</Text>
           </Box>
         </Box>
         <Box w="20%" pt="30px" pl="100px">
@@ -211,31 +235,11 @@ export const Footer = () => {
         </Box>
         <Box w="20%" pt="30px" pl="100px">
           <Box color="white" textAlign="left">
-            <Text>Help</Text>
-            <Text>FAQs</Text>
-            <Text>Contact Us</Text>
-            <Text>bb Wallet FAQs</Text>
-            <Text>bb Wallet T&Cs</Text>
-            <Text>Vendor Connect</Text>
-          </Box>
-        </Box>
-        <Box w="20%" pt="30px" pl="100px">
-          <Box color="white" textAlign="left">
-            <Text>Help</Text>
-            <Text>FAQs</Text>
-            <Text>Contact Us</Text>
-            <Text>bb Wallet FAQs</Text>
-            <Text>bb Wallet T&Cs</Text>
-            <Text>Vendor Connect</Text>
-          </Box>
-        </Box>
-        <Box w="20%" pt="30px" pl="100px">
-          <Box color="white" textAlign="left">
-            <Text>Help</Text>
-            <Text>FAQs</Text>
-            <Text>Contact Us</Text>
-            <Text>bb Wallet FAQs</Text>
-            <Text>bb Wallet T&Cs</Text>
+            <Text>Fresho</Text>
+            <Text>Surf Excel</Text>
+            <Text>Britannia</Text>
+            <Text>Haldirams</Text>
+            <Text>Horlicks</Text>
             <Text>Vendor Connect</Text>
           </Box>
         </Box>

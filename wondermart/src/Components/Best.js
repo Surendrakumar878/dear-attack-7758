@@ -1,6 +1,6 @@
-import React from "react";
-import Mycard from "./Mycard.js";
-import "./Imagecarousal.css";
+import React,{useState} from "react";
+import "./Best.css";
+import MyBestCard from "./MyBestCard.js";
 let arr = [
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/10000148_30-fresho-onion.jpg?tr=w-1920,q=80",
@@ -68,29 +68,33 @@ let arr = [
 
 const Best = () => {
   let box = document.querySelector(".product-container");
+  const [changes,setChanges]=useState(false)
 
-  const btnpressprev = () => {
+  const btnBestpressprev = () => {
     console.log(box.clientWidth);
     let width = box.clientWidth;
     console.log("width", width);
     box.scrollLeft = box.scrollLeft - box.clientWidth;
   };
 
-  const btnpressnext = () => {
-    console.log("kk", box.scrollLeft);
+  const btnBestpressnext = () => {
+    setChanges(true)
+    // console.log("kk", box.scrollLeft);
+    // box.clientWidth=0
+    
     box.scrollLeft = box.scrollLeft + box.clientWidth;
     console.log(box.scrollLeft);
   };
   return (
     <div className="product-carousel">
-      <button className="pre-btn" onClick={btnpressprev}>
+      <button className="pre-btn" onClick={btnBestpressprev}>
         <p>&lt;</p>
       </button>
-      <button className="next-btn" onClick={btnpressnext}>
+      <button className="next-btn" onClick={btnBestpressnext}>
         <p>&gt;</p>
       </button>
 
-      <div className="product-container">
+      <div className="best-container">
         {/* <Mycard cardno='1' />
                 <Mycard cardno='2' />
                 <Mycard cardno='3' />
@@ -105,7 +109,7 @@ const Best = () => {
                 <Mycard cardno='12' />
                 <Mycard cardno='13' /> */}
         {arr.map((ele) => (
-          <Mycard cardimg={ele.url} cardbrand={ele.brand} carddetail={ele.detail} cardcost={ele.cost} selectkg={ele.kg} />
+          <MyBestCard cardimg={ele.url} cardbrand={ele.brand} carddetail={ele.detail} cardcost={ele.cost} selectkg={ele.kg} rating={ele.rating} />
         ))}
       </div>
     </div>
@@ -113,3 +117,7 @@ const Best = () => {
 };
 
 export default Best;
+
+
+
+

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Mycard.css";
+import "./MyBest.css";
 import {
   Menu,
   MenuButton,
@@ -10,19 +10,17 @@ import {
   Stack,
   Select,
   useToast,
-  Box
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Quantity from "./Quantity";
 
-const Mycard = ({
+const MyBestCard = ({
   cardimg,
   carddetail,
   cardbrand,
   cardcost,
   selectkg,
   rating,
-  offer
 }) => {
   const [load, setLoad] = useState(false);
   const [replace, setReplace] = useState(true);
@@ -48,7 +46,7 @@ const Mycard = ({
   };
 
   return (
-    <div className="mycard">
+    <div className="mybestcard">
       <div
         style={{
           border: "0.2px solid #DEDEDE",
@@ -56,7 +54,6 @@ const Mycard = ({
           borderRadius: "10px",
         }}
       >
-        <Box background="red" w='70px' borderRadius="10px 0px 10px 0px "> {offer}</Box>
         <img src={cardimg} alt="product" style={style1} />
       </div>
       <div
@@ -100,7 +97,7 @@ const Mycard = ({
             textAlign: "start",
             textDecoration: "bold",
             fontSize: "25px",
-            marginBottom: "10px",
+            marginBottom: "30px",
           }}
         >
           {cardcost}
@@ -134,4 +131,4 @@ const Mycard = ({
   );
 };
 
-export default Mycard;
+export default MyBestCard;

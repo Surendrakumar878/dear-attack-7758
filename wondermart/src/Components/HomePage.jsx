@@ -18,16 +18,20 @@ import AnotherSlider from "./AnotherSlider";
 
 import Imagecarousel from "./Imagecarousel.js";
 import Best from "./Best.js";
+import SimpleSlider from "./SlickCarousel";
 
 
 
 const HomePage = () => {
   return (
     <Box>
+      
     
       <Box w="100%">
         <Slider />
       </Box>
+      
+      
       <Box w="80%" margin="auto">
         <Grid
           templateColumns={{ md: "repeat(6, 1fr)", base: "repeat(2, 1fr)" }}
@@ -126,7 +130,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Imagecarousel />
+        <Best />
 
         <Box
           borderBottom="1px solid #DEDEDE"

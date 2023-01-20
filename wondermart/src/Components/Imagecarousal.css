@@ -17,7 +17,7 @@
     border-radius: 20px;
 }
 
-.pre-btn,
+/* .pre-btn,
 .next-btn {
     border: none;
     width: 50px;
@@ -30,8 +30,8 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0);
    
-}
-.pre-btn{
+} */
+/* .pre-btn{
     position: absolute;
     display: flex;
     justify-content: center;
@@ -55,4 +55,30 @@
     height: 50px;
     cursor: pointer;
     background-color:rgb(107, 96, 100)
+} */
+
+.pre-btn{
+    /* border:1px solid red; */
+    width:40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-left: 960px;
+    margin-right: 20px;
+    background-color: #9FA6AC;
+    
 }
+.next-btn{
+    /* border:1px solid red; */
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #9FA6AC;
+   
+
+}
+@media only screen and (max-width: 1400px) { 
+   .pre-btn{
+    margin-left: 50px;
+    margin-right: 20px;
+   } 
+  }

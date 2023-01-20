@@ -10,6 +10,7 @@ export const Footer = () => {
       pt="30px"
       fontFamily="ProximaNova,Helvetica,Arial"
       fontSize="14px"
+      display={{base:"none",md:"block"}}
     >
       <Box
         display="flex"
@@ -45,7 +46,7 @@ export const Footer = () => {
           </Box>
         </Box>
         <Box w="32%" pl="100px">
-          <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpcerr2SWYq1l2OXV-OpH_CFRYP3FLZ9ypRg&usqp=CAU" />
+          <Image src="https://i.ibb.co/gM7mb15/imageedit-2-2956265302.png" h="100px" w="200px" borderRadius="20px" />
           <Box display="flex" gap="30px">
             <Image
               src="https://cdn-icons-png.flaticon.com/128/733/733547.png"
@@ -84,7 +85,7 @@ export const Footer = () => {
         >
           Cities we can serve
         </Text>
-        <Text color="white">
+        <Text color="white" >
           Dhamnod | Medinipur | Modasa | Gopalganj | Nainital | Pakyong |
           Shilong | Tawang | Paschim Bardhaman | PEDDAPALLI | Amreli |
           Narsinghpur | Howrah | Badnagar | Deesa | Kozhikode | Warangal |

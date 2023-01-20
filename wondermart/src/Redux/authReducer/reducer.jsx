@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 import * as types from './ActionTypes'
 
 const initialState = {
@@ -42,4 +40,4 @@ export const reducer = (state = initialState, action) => {
         default: return state
     }
 }
->>>>>>> f2638e100371409994c1d5234130e77cb2b36756
+

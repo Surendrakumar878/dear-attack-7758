@@ -23,10 +23,25 @@ export const postLoginFailure = () => {
 export const login = (payload) => (dispatch) => {
     dispatch(postLoginRequest())
 
-     axios.post(`https://mocker-api.onrender.com/users`,payload)
-        .then((r) => {
-            console.log(r.data.token);
-            dispatch(postLoginSuccess(r.data.token))
+     axios.post(`https://rich-red-indri-tie.cyclic.app/users/login`,payload)
+        .then((res) => {
+            localStorage.setItem("token",res.data.token)
+    console.log(res.data.token)
+            dispatch(postLoginSuccess(res.data.token))
+        })
+        .catch((e) => {
+            dispatch(postLoginFailure())
+        })
+}
+
+export const signup = (payload) => (dispatch) => {
+    dispatch(postLoginRequest())
+
+     axios.post(`https://rich-red-indri-tie.cyclic.app/users/user/signup`,payload)
+        .then((res) => {
+            // localStorage.setItem("token",res.data.token)
+    console.log(res.data)
+            // dispatch(postLoginSuccess(res.data.token))
         })
         .catch((e) => {
             dispatch(postLoginFailure())

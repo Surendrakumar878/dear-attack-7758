@@ -24,14 +24,20 @@ import React, { useState } from "react";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { login } from "../../Redux/AuthReducer/Action";
+import { login, signup } from "../../Redux/authReducer/Action";
 export const Navbar = () => {
   const dispatch=useDispatch()
   const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
+const [sname,setSname]=useState("")
+const [semail,setSEmail]=useState("")
+const [spassword,setSPassword]=useState("")
   const [on, setOn] = useState(false);
+  const [one, setOne] = useState(false);
   const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    //handleSubmitSignup
     const handleSubmit = (e) => {
       e.preventDefault();
       const payload={
@@ -51,7 +57,25 @@ const [password,setPassword]=useState("")
       });
       onClose();
     };
-
+    const handleSubmitSignup = (e) => {
+      e.preventDefault();
+      const payload={
+        "username":sname,
+        "email":semail,
+        "password":spassword,
+        
+    }
+    dispatch(signup(payload))
+    console.log(payload)
+      toast({
+        title: "Welcome",
+        description: "You are now signed in.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+      onClose();
+    };
     console.log(email,
       password,)
   return (
@@ -94,7 +118,7 @@ const [password,setPassword]=useState("")
             color={"white"}
           >
             { <Text  onClick={onOpen}>
-          Login/Signup
+          {localStorage.getItem("token").length>2?"logout":"Login/Signup"}
         </Text>}
           </Box>
           <Box w="5%" ml="10px" bg={"red.300"} borderRadius={"8px"}>
@@ -210,9 +234,9 @@ const [password,setPassword]=useState("")
                   <Input
                     type="password"
                     id="password"
-                    value={password}
                     placeholder="Enter your password"
                     aria-describedby="password-helper-text"
+                    value={password}
                     onChange={(e)=>setPassword(e.target.value)} 
                   />
                 </FormControl>
@@ -232,7 +256,7 @@ const [password,setPassword]=useState("")
                 onClick={() => setOn(!on)}
                 // to="/signup"
               >
-                {on?"Signup":"login"}
+                {one?"Signup":"login"}
               </NavLink>
             </ModalFooter>
           </ModalContent>:
@@ -249,6 +273,8 @@ const [password,setPassword]=useState("")
                     id="email"
                     placeholder="Enter your email"
                     aria-describedby="email-helper-text"
+                    value={semail}
+                    onChange={(e)=>setSEmail(e.target.value)} 
                   />
                 </FormControl>
   
@@ -259,6 +285,8 @@ const [password,setPassword]=useState("")
                     id="password"
                     placeholder="Enter your password"
                     aria-describedby="password-helper-text"
+                    value={spassword}
+                    onChange={(e)=>setSPassword(e.target.value)} 
                   />
                 </FormControl>
   
@@ -269,6 +297,8 @@ const [password,setPassword]=useState("")
                     id="name"
                     placeholder="Enter your name"
                     aria-describedby="name-helper-text"
+                    value={sname}
+                    onChange={(e)=>setSname(e.target.value)} 
                   />
                 </FormControl>
   
@@ -279,16 +309,17 @@ const [password,setPassword]=useState("")
                     id="phone"
                     placeholder="Enter your phone number"
                     aria-describedby="phone-helper-text"
+
                   />
                 </FormControl>
               </form>
             </ModalBody>
   
             <ModalFooter>
-            <Button variantColor="teal" mr={3} onClick={handleSubmit}>
+            <Button variantColor="teal" mr={3} onClick={handleSubmitSignup}>
               Signup
             </Button>
-            <Link  onClick={() => setOn(!on)}> {on?"Signup":"login"}</Link>
+            <Link  onClick={() => setOne(!one)}> {on?"Signup":"login"}</Link>
           </ModalFooter>
           </ModalContent>}
         </Modal>

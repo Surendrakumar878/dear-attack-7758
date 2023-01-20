@@ -26,7 +26,7 @@ export const login = (payload) => (dispatch) => {
      axios.post(`https://mocker-api.onrender.com/users`,payload)
         .then((r) => {
             console.log(r.data.token);
-            dispatch(postLoginSuccess(r.data))
+            dispatch(postLoginSuccess(r.data.token))
         })
         .catch((e) => {
             dispatch(postLoginFailure())

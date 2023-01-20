@@ -17,7 +17,7 @@ import {
 const SingleCart = ({id, name,img, price, strikePrice, Qty} ) => {
     console.log("what is this",id, name,img, price, strikePrice, Qty)
   return (
-           <Tr borderBottom={"1px solid gray"} h={"200px"}>
+           <Tr borderBottom={"1px solid gray"} mb="2%" h={"200px"} _hover={{boxShadow:" rgba(0, 0, 0, 0.35) 0px 5px 15px;"}}>
               <Td w={"70%"} mr="10%" bg={""}>
                 <Box display={"flex"} alignItems={"center"} >
                   <Image src={img}/>

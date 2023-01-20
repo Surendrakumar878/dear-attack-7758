@@ -8,9 +8,9 @@ import { Footer } from './Components/footer/Footer';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      {/* <Navbar/> */}
       <PageRouter/>
-     <Footer/>
+     {/* <Footer/> */}
     </div>
   );
 }

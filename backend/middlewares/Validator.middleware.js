@@ -5,9 +5,13 @@ const Validator = (req, res, next) => {
                 next();
             }
             else {
-                res.send({ message: "All the fields are not there" });
+                res.send({ message: "All the fields are not there 1" });
             }
+        }else {
+            next();
         }
+    }else {
+        next();
     }
 };
 

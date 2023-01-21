@@ -12,15 +12,19 @@ import {
   TableCaption,
   TableContainer,
 } from '@chakra-ui/react'
-
+import {MdDelete} from "react-icons/md"
+import Quantity from "../Components/Quantity"
 
 const SingleCart = ({id, name,img, price, strikePrice, Qty} ) => {
-    console.log("what is this",id, name,img, price, strikePrice, Qty)
+    // console.log("what is this",id, name,img, price, strikePrice, Qty)
+    const handleDelete = () => {
+      console.log("deleted =>",id);
+    }
   return (
-           <Tr borderBottom={"1px solid gray"} mb="2%" h={"200px"} _hover={{boxShadow:" rgba(0, 0, 0, 0.35) 0px 5px 15px;"}}>
+           <Tr borderBottom={"2px solid green"}   h={"200px"} _hover={{boxShadow:" rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;"}}>
               <Td w={"70%"} mr="10%" bg={""}>
                 <Box display={"flex"} alignItems={"center"} >
-                  <Image src={img}/>
+                  <Image src={img} w="150px"/>
                   <Box ml={"10%"} lineHeight={"25px"}>
                     <Text>{name}</Text>
                     <Text> <b>₹{price}</b> <strike>₹{strikePrice}</strike></Text>                    
@@ -29,12 +33,19 @@ const SingleCart = ({id, name,img, price, strikePrice, Qty} ) => {
               </Td>
               <Td>
                 <Box p="3% 5%"  _hover={{boxShadow:"rgba(149, 157, 165, 0.2) 0px 8px 24px"}} border={"1px solid #bfbfbf"} bg="white" textAlign={"center"} display={"flex"} alignItems="center" justifyContent={"space-between"}>
-                  <Button _hover={{bg:'#cc0000'}} color={"white"} fontSize="38px" pb="2%"  display={"flex"} alignItems="center" >-</Button>
+                  {/* <Button _hover={{bg:'#cc0000'}} color={"white"} fontSize="38px" pb="2%"  display={"flex"} alignItems="center" >-</Button>
                   <Button m={"1%"}>{Qty}</Button>
-                  <Button _hover={{bg:'#cc0000'}} color={"white"} fontSize="38px"   pb="2%" display={"flex"} alignItems="center" >+</Button>
+                  <Button _hover={{bg:'#cc0000'}} color={"white"} fontSize="38px"   pb="2%" display={"flex"} alignItems="center" >+</Button> */}
+        
+                  <Quantity/>
                 </Box>
+                <Box display={"flex"} alignItems="center" justifyContent={"space-around"}>
+                    <Text fontSize={"14px"} onClick={handleDelete} cursor="pointer">Delete</Text>
+                    <Text fontSize={"14px"}>Save for later</Text>
+                  </Box>
               </Td>
-              <Td isNumeric><b>₹{price}</b></Td>
+              <Td isNumeric ><b>₹{price}</b></Td>
+  
             </Tr>
 
   )

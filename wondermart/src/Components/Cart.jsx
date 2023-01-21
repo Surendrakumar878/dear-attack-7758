@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box, Button, Heading, Image, Text } from "@chakra-ui/react"
 import {
   Table,
@@ -13,18 +13,30 @@ import {
 } from '@chakra-ui/react'
 import { product } from './db'
 import SingleCart from './SingleCart'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { cart } from '../Redux/cartReducer/action'
 
 
 const Cart = () => {
 
-  var items = "(5 Items)"
+  const data = useSelector((store) => store.cartReducer)
+  const dispatch =  useDispatch()
+  console.log("data =>",data);
+  
+  useEffect(() => {
+    dispatch(cart())
+  }, [])
+  
+
+  
   return (
-    <Box w="100%" h={"auto"} pt="2%">
+    <Box w="100%" h={"auto"} p="2% 0">
       <Box bg={""} p="2%  1%" w="75%" h={"auto"} m="auto">
         <Box className='checkoutBtn' borderRadius={"10px"} p={"2%"} w="100%" h={"90px"} bg="#202020" display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
           <Box bg={""}>
             <Box p="15px 15px 10px 5px" textAlign="left">
-              <Heading color={"white"} fontSize={"17px"}>Subtotal {items}: <b> ₹ 241.46</b></Heading>
+              <Heading color={"white"} fontSize={"17px"}>Subtotal {product.length} Items: <b> ₹ 241.46</b></Heading>
               {/* <Box w='100%' h='200px' bgGradient='linear(to-r, black.500, pink.500)' /> */}
               <Heading color={"#8bbe32"} fontSize={"16px"} p={"2% 4% 2% 0%"} >Savings: ₹ 129.57</Heading>
             </Box>
@@ -46,15 +58,15 @@ const Cart = () => {
             />
             <Thead>
               <Tr>
-                <Th>Items  (5 items)</Th>
+                <Th>Items  {(product.length)} Items</Th>
                 <Th>Quantity</Th>
                 <Th isNumeric>Sub-total</Th>
               </Tr>
             </Thead>
-            <Tbody m={"5% 1%"}>
+            <Tbody m={"5%"} gap="3%">
 
               {
-                product.map((ele) => <SingleCart key={ele.id} id={ele.id} name={ele.name} img={ele.img} price={ele.price} strikePrice={ele.strikePrice} Qty={ele.Qty} />)
+                 data?.data.map((ele) => <SingleCart key={ele._id} id={ele.id} name={ele.name} img={ele.ImgSrc} price={ele.price} strikePrice={ele.strikePrice} Qty={ele.Qty} />)
               }
             </Tbody>
           </Table>

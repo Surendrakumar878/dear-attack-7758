@@ -15,6 +15,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  tokenToCSSVar,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -95,7 +96,7 @@ export const Navbar = () => {
     });
     onClose();
   };
-  console.log(email, password);
+  // console.log(email, password);
 
 const subnav=(i)=>{
 if(i==="Fruits & Vegetables"){
@@ -107,12 +108,10 @@ return setCategory2([
 "Fresh Fruits",
 "Fresh Vegetables",
 "Herbs & Seasonings",
-
-
-
 ])
 }
 else if(i==="Foodgrains, Oil & Masala"){
+  // eslint-disable-next-line no-sparse-arrays
   return setCategory2([
     
     ,'Atta, Flours & Sooji'
@@ -162,13 +161,7 @@ else if(i==="Foodgrains, Oil & Masala"){
             ,'Indian Mithai'
            , 'Noodle, Pasta, Vermicelli'
             ,'Pickles & Chutney'
-           
-
-            
-            
-            
-            
-            ])
+           ])
           }
           else if(i==="Baby Care"){
             return setCategory2([
@@ -182,6 +175,7 @@ else if(i==="Foodgrains, Oil & Masala"){
               ])
             }
             else if(i==="Cleaning & Household"){
+              // eslint-disable-next-line no-sparse-arrays
               return setCategory2(['Baby Accessories',
               'Baby Bath & Hygiene',
               'Baby Food & Formula',
@@ -206,6 +200,7 @@ const subnav1=(i)=>{
   ])
   }
   else if(i==="Foodgrains, Oil & Masala"){
+    // eslint-disable-next-line no-sparse-arrays
     return setCategory3([
       
       ,'Atta, Flours & Sooji'
@@ -231,6 +226,7 @@ const subnav1=(i)=>{
       'Soothers & Teethers',])
       }
       else if(i==="Bakery, Cakes & Dairy"){
+        // eslint-disable-next-line no-sparse-arrays
         return setCategory3([
           
         
@@ -253,6 +249,7 @@ const subnav1=(i)=>{
           'Soothers & Teethers',])
           }
           else if(i==="Biscuits & Cookies"){
+            // eslint-disable-next-line no-sparse-arrays
             return setCategory3([
               
               ,'Cookies'
@@ -289,8 +286,10 @@ const subnav1=(i)=>{
                 }
   
   }
+
+  let token=localStorage.getItem("token")||[]
   return (
-    <Box w={"100%"} position="fixed" zIndex={1}>
+    <Box position="fixed" zIndex={1} w={{ lg: "100%", sm: "100%", md: "100%" }}>
       <Box bg="white" p="20px" w="100%" color={"green"} m="auto">
         <Box display="flex" w={"100%"}>
           <Box w="20%" border="1px solid blue">
@@ -331,7 +330,7 @@ const subnav1=(i)=>{
           >
             {
               <Text onClick={onOpen}>
-                {localStorage.getItem("token").length > 2
+                {token.length> 2
                   ? "logout"
                   : "Login/Signup"}
               </Text>
@@ -347,7 +346,7 @@ const subnav1=(i)=>{
         </Box>
 
         {/* second Navbar */}
-
+{/* ________________------------------------second Navbar ---------------------------------------------- */}
         <Box
           position="relative"
           display="flex"
@@ -355,8 +354,8 @@ const subnav1=(i)=>{
           justifyContent="space-around"
           color={"black"}
         >
-          <Button onClick={() => setOn(!on)} bg="#5e9400" color={"white"}>
-            Shop By category
+          <Button onClick={() => setOn(!on)} bg="#5e9400"  _hover={{ bg:'#5e9400'}} color={"white"}>
+            Shop By category 
           </Button>
 
           <Button color={"black"} variant="link">
@@ -378,6 +377,8 @@ const subnav1=(i)=>{
             {">>"}
           </Button>
         </Box>
+{/* ________________------------------------dropdown---------------------------------------------- */}
+
         {on && (
           <Box
             w="750px"
@@ -451,6 +452,8 @@ const subnav1=(i)=>{
           </Box>
         )}
       </Box>
+{/* ________________------------------------modal---------------------------------------------- */}
+
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         {one? (

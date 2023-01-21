@@ -20,14 +20,14 @@ const ProductStelton = (props) => {
   } = props;
 //   console.log(props);
   return (
-    <div className="p-2 border shadow-lg">
+    <div className="p-2 border shadow-lg hover:shadow-2xl">
         <p className=" shadow-xl text-end text-xs py-1 text-[#f93d30] font-semibold animate-pulse">
             GET 20% OFF 💥
           </p>
         <div className="flex flex-row gap-3 md:block">
-          <div className="">
+          <div className="overflow-hidden">
             <img
-              className="border-2 border-red-500 w-[210px] h-[180px] cursor-pointer"
+              className="border-2 border-red-500 w-[210px] h-[180px] cursor-pointer hover:scale-110 duration-500"
               src={ImgSrc}
               alt=""
             />

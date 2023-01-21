@@ -197,7 +197,7 @@ const Products = () => {
             <div>
               {/* cat filter */}
               <div className="mt-5 mx-2 border-b-2">
-                <h1 className="text-sm md:text-lg border-b-2 border-solid w-20 border-[#84c225]">
+                <h1 className="text-sm md:text-lg text-gray-500 border-b-2 border-solid w-20 border-[#84c225]">
                   Category
                 </h1>
               </div>
@@ -220,7 +220,7 @@ const Products = () => {
             {/* brand filter */}
             <div className="mx-2">
               <div className="mt-3 border-b-2">
-                <h1 className="text-sm md:text-lg border-b-2 border-solid w-14 border-[#84c225]">
+                <h1 className="text-sm md:text-lg border-b-2 border-solid w-14 text-gray-500 border-[#84c225]">
                   Brand
                 </h1>
               </div>
@@ -239,7 +239,7 @@ const Products = () => {
                 <div className="px-1 mt-1 text-xs lg:text-sm text-gray-500 overflow-y-scroll">
                   <div className="text-sm flex items-center gap-2 mt-2">
                     <input
-                      className="w-[15px] h-[15px] rounded-none"
+                      className="w-[15px] h-[15px] block border-[solid_white]"
                       type="checkbox"
                       value=""
                       name=""
@@ -271,7 +271,7 @@ const Products = () => {
             {/* country of origin */}
             <div className="mx-2">
               <div className="mt-3 border-b-2">
-                <h1 className="text-sm md:text-sm lg:text-lg border-b-2 w-36 border-solid border-[#84c225]">
+                <h1 className="text-sm text-gray-500 md:text-sm lg:text-lg border-b-2 w-36 border-solid border-[#84c225]">
                   Country Of Origin
                 </h1>
               </div>
@@ -434,7 +434,7 @@ const Products = () => {
             {/* discount */}
             <div className="mx-2">
               <div className="mt-3 border-b-2">
-                <h1 className="text-sm md:text-lg border-b-2 border-solid w-20 border-[#84c225]">
+                <h1 className="text-sm text-gray-500 md:text-lg border-b-2 border-solid w-20 border-[#84c225]">
                 Discount
                 </h1>
               </div>
@@ -491,7 +491,7 @@ const Products = () => {
             {/* price */}
             <div className="mx-2">
               <div className="mt-3 border-b-2">
-                <h1 className="text-sm md:text-lg border-b-2 border-solid w-14 border-[#84c225]">
+                <h1 className="text-sm md:text-lg border-b-2 border-solid text-gray-500 w-14 border-[#84c225]">
                 Price
                 </h1>
               </div>

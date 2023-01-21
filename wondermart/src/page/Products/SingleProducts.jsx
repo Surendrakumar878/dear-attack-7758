@@ -76,7 +76,7 @@ const SingleProducts = () => {
 
       <div className="w-[100%] md:w-[80%] mx-auto flex mt-3">
         {/* category section */}
-        <div className="w-1/5 border-r-2 h-[400px] hidden md:block">
+        <div className="w-1/5 border-r-2 h-[400px] hidden lg:block">
           <div>
             <div className="mt-5 mx-2 border-b-2">
               <h1 className="text-sm md:text-lg text-gray-500 border-b-2 border-solid w-20 border-[#84c225]">
@@ -150,9 +150,9 @@ const SingleProducts = () => {
           </div>
         </div>
         {/* products details */}
-        <div className="w-[100%] md:w-4/5 md:shadow-md flex flex-col md:flex-row">
-          <div className="w-[100%] md:w-[50%] h-auto">
-            <div className="w-[380px] h-[300px] md:h-full md:w-full px-2">
+        <div className="w-[100%] lg:w-4/5 md:shadow-md flex flex-col md:flex-row">
+          <div className="w-[100%] lg:w-[50%] h-auto">
+            <div className=" md:h-full md:w-full px-2 hidden md:block">
               <ReactImageMagnify
                 {...{
                   smallImage: {
@@ -175,11 +175,11 @@ const SingleProducts = () => {
                 }}
               />
             </div>
-            {/* <img
-              className="w-[380px] h-[300px] md:h-full md:w-full px-2"
+            <img
+              className="w-[380px] h-[300px] md:h-full md:w-full px-3 block md:hidden"
               src="https://www.bigbasket.com/media/uploads/p/l/40075537_5-fresho-onion.jpg"
               alt=""
-            /> */}
+            />
           </div>
 
           <div className="w-[100%] md:w-[50%] ">
@@ -225,7 +225,7 @@ const SingleProducts = () => {
                 </div>
 
                 <div className="border-2 border-[#84c225] px-3 py-2 rounded-md bg-[#84c225] hover:shadow-xl md:shadow-[#84c225]">
-                  <button className="text-xs md:text-sm text-white font-bold">
+                  <button className="text-xs md:text-xs lg:text-sm text-white font-bold">
                     ADD TO BASKET
                   </button>
                 </div>
@@ -313,7 +313,7 @@ const SingleProducts = () => {
         </div>
       </div>
       {/* about sec */}
-      <div className=" mt-5 mb-6">
+      <div className=" mt-5 px-2 mb-6">
         <div className="w-[100%] md:w-[80%] mx-auto">
         <h1 className="text-2xl mb-3 mt-2 text-gray-500">Fresho Onion, 2 kg</h1>
           <Accordion allowMultiple className="text-sm text-gray-500">

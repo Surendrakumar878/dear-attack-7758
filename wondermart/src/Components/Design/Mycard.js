@@ -96,7 +96,8 @@ const Mycard = ({
             border="1px solid red"
           />
         </Stack>
-        <p
+        
+          <p
           style={{
             textAlign: "start",
             textDecoration: "bold",
@@ -105,7 +106,8 @@ const Mycard = ({
           }}
         >
           {cardcost}
-        </p>
+          </p>
+        
         <div style={{ display: "flex" }}>
           <Link to="/login"><img
             src="https://cdn4.iconfinder.com/data/icons/e-commerce-icon-set/48/Bookmark-512.png"

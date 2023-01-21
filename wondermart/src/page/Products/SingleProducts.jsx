@@ -16,7 +16,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   ListItem,
-  OrderedList,
   UnorderedList,
 } from "@chakra-ui/react";
 import ReactImageMagnify from "react-image-magnify";

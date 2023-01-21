@@ -1,13 +1,16 @@
 import { ChevronRightIcon, Search2Icon } from "@chakra-ui/icons";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
-import React from "react";
+import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 
 
 import ProductStelton from "./productStelton";
 import "../App.css";
+import { getAllProducts } from "../Redux/productsReducer/action";
 
-const data = [
+const dat = [
   "https://www.bigbasket.com/media/uploads/banner_images/L1-YXNP8606-1200X300-5thDEC22.jpg",
   "https://www.bigbasket.com/media/uploads/banner_images/L1-YXNP8603-1200X300-5thDEC22.jpg",
   "https://www.bigbasket.com/media/uploads/banner_images/L1-YXNP8600-1200X300-5thDEC22.jpg",
@@ -142,7 +145,22 @@ const test=[
 }
 ]
 
+
 const Products = () => {
+  const search=useLocation().search;
+
+  const {data}=useSelector((store)=>store.productReducer)
+
+  const {AllProducts:{loading}}=useSelector((store)=>store.productReducer)
+  
+  const dispatch = useDispatch();
+
+  console.log(data);
+
+  useEffect(()=>{
+    dispatch(getAllProducts())
+  },[dispatch])
+
   return (
     <div className="w-full">
       <div className="w-[100%] md:w-[100%] lg:w-[80%] mx-auto mt-5">
@@ -175,7 +193,7 @@ const Products = () => {
             slidesToScroll={1}
             autoplay
           >
-            {data.map((e) => (
+            {dat.map((e) => (
               <div key={e}>
                 <img src={e} className="w-full" alt="" />
               </div>
@@ -600,7 +618,8 @@ const Products = () => {
             {/* individual products */}
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-10">
                 {
-                  test.map((e,i)=>(
+                  data&&
+                  data.map((e,i)=>(
                     <ProductStelton
                     key={i}
                     brand={e.brand}

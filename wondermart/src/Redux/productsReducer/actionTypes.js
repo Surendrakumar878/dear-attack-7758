@@ -1,0 +1,9 @@
+//for all products
+export const GET_ALL_PRODUCTS_REQUEST = 'products/GET_ALL_PRODUCTS_REQUEST';
+export const GET_ALL_PRODUCTS_SUCCESS = 'products/GET_ALL_PRODUCTS_SUCCESS';
+export const GET_ALL_PRODUCTS_FAILURE = 'products/GET_ALL_PRODUCTS_FAILURE';
+
+//for single product page
+export const GET_SINGLE_PRODUCT_REQUEST = 'products/GET_SINGLE_PRODUCT_REQUEST';
+export const GET_SINGLE_PRODUCT_SUCCESS = 'products/GET_SINGLE_PRODUCT_SUCCESS';
+export const GET_SINGLE_PRODUCT_FAILURE = 'products/GET_SINGLE_PRODUCT_FAILURE';

@@ -26,7 +26,8 @@ export const login = (payload) => (dispatch) => {
      axios.post(`https://rich-red-indri-tie.cyclic.app/users/login`,payload)
         .then((res) => {
             localStorage.setItem("token",res.data.token)
-    console.log(res.data.token)
+            localStorage.setItem("adminkey",res.data.adminID)
+    console.log(res.data)
             dispatch(postLoginSuccess(res.data.token))
         })
         .catch((e) => {

@@ -17,7 +17,7 @@ function PageRouter() {
     <Routes>
         <Route path="/" element={<HomePage/>}/>
         
-        <Route path="/nav" element={<Navbar/>}/>
+        {/* <Route path="/nav" element={<Navbar/>}/> */}
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/cart" element={<Cart/>}/>

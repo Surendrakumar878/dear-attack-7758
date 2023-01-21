@@ -107,7 +107,6 @@ const MyBestCard = ({
             src="https://cdn4.iconfinder.com/data/icons/e-commerce-icon-set/48/Bookmark-512.png"
             alt="icon"
             style={{ width: "40px" }}
-            
           />
 
           {replace ? (

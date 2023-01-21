@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Quantity from "./Quantity";
+import { Link } from "react-router-dom";
 
 const Mycard = ({
   cardimg,
@@ -56,7 +57,7 @@ const Mycard = ({
           borderRadius: "10px",
         }}
       >
-        <Box background="red" w='70px' borderRadius="10px 0px 10px 0px "> {offer}</Box>
+        <Box background="red" w='70px' borderRadius="10px 0px 10px 0px " color="#FFFFFF" fontWeight="bold" fontSize="15px"> {offer}</Box>
         <img src={cardimg} alt="product" style={style1} />
       </div>
       <div
@@ -106,12 +107,13 @@ const Mycard = ({
           {cardcost}
         </p>
         <div style={{ display: "flex" }}>
-          <img
+          <Link to="/login"><img
             src="https://cdn4.iconfinder.com/data/icons/e-commerce-icon-set/48/Bookmark-512.png"
             alt="icon"
             style={{ width: "40px" }}
             
           />
+          </Link>
 
           {replace ? (
             <Button

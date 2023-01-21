@@ -2,8 +2,11 @@ import {
   Box,
   Button,
   Center,
+  FormControl,
+  FormLabel,
   Image,
   Input,
+  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,16 +16,70 @@ import {
   ModalOverlay,
   Text,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 // import { Button } from "bootstrap";
 import React, { useState } from "react";
 // import { ModalBody, ModalHeader } from "react-bootstrap";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { login, signup } from "../../Redux/authReducer/Action";
 export const Navbar = () => {
+  const dispatch=useDispatch()
+  const [email,setEmail]=useState("")
+const [password,setPassword]=useState("")
+const [sname,setSname]=useState("")
+const [semail,setSEmail]=useState("")
+const [spassword,setSPassword]=useState("")
   const [on, setOn] = useState(false);
+  const [one, setOne] = useState(false);
+  const toast = useToast();
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
+    //handleSubmitSignup
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const payload={
+        
+        email,
+        password,
+        
+    }
+    dispatch(login(payload))
+    console.log(payload)
+      toast({
+        title: "Welcome",
+        description: "You are now logged in.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+      onClose();
+    };
+    const handleSubmitSignup = (e) => {
+      e.preventDefault();
+      const payload={
+        "username":sname,
+        "email":semail,
+        "password":spassword,
+        
+    }
+    dispatch(signup(payload))
+    console.log(payload)
+      toast({
+        title: "Welcome",
+        description: "You are now signed in.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+      onClose();
+    };
+    console.log(email,
+      password,)
   return (
-    <Box w={"100%"}>
+    <Box w={"100%"} position="fixed" zIndex={1}>
       <Box bg="white" p="20px" w="80%" color={"green"} m="auto">
         <Box display="flex" w={"100%"}>
           <Box w="20%" border="1px solid blue">
@@ -60,7 +117,9 @@ export const Navbar = () => {
             bg="black"
             color={"white"}
           >
-            login/signup
+            { <Text  onClick={onOpen}>
+          {localStorage.getItem("token").length>2?"logout":"Login/Signup"}
+        </Text>}
           </Box>
           <Box w="5%" ml="10px" bg={"red.300"} borderRadius={"8px"}>
             {" "}
@@ -151,6 +210,119 @@ export const Navbar = () => {
           </Box>
         )}
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          {on?<ModalContent>
+            <ModalHeader>Login</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <form onSubmit={handleSubmit}>
+                <FormControl>
+                  <FormLabel htmlFor="email">Email</FormLabel>
+                  <Input
+                    type="email"
+                    id="email"
+                    value={email}
+                    placeholder="Enter your email"
+                    aria-describedby="email-helper-text"
+                    onChange={(e)=>setEmail(e.target.value)}
+                  />
+                </FormControl>
+  
+                <FormControl mt={4}>
+                  <FormLabel htmlFor="password">Password</FormLabel>
+                  <Input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    aria-describedby="password-helper-text"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)} 
+                  />
+                </FormControl>
+              </form>
+            </ModalBody>
+  
+            <ModalFooter>
+              <Button variantColor="teal" mr={3} onClick={handleSubmit}>
+                Login
+              </Button>
+              <NavLink
+                ml={2}
+                textDecor ="underline"
+                fontSize = "sm"
+                color = "blue.500"
+                // href = "/singup"
+                onClick={() => setOn(!on)}
+                // to="/signup"
+              >
+                {one?"Signup":"login"}
+              </NavLink>
+            </ModalFooter>
+          </ModalContent>:
+          
+          <ModalContent>
+            <ModalHeader>Signup</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <form onSubmit={handleSubmit}>
+                <FormControl>
+                  <FormLabel htmlFor="email">Email</FormLabel>
+                  <Input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    aria-describedby="email-helper-text"
+                    value={semail}
+                    onChange={(e)=>setSEmail(e.target.value)} 
+                  />
+                </FormControl>
+  
+                <FormControl mt={4}>
+                  <FormLabel htmlFor="password">Password</FormLabel>
+                  <Input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    aria-describedby="password-helper-text"
+                    value={spassword}
+                    onChange={(e)=>setSPassword(e.target.value)} 
+                  />
+                </FormControl>
+  
+                <FormControl mt={4}>
+                  <FormLabel htmlFor="name">Name</FormLabel>
+                  <Input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    aria-describedby="name-helper-text"
+                    value={sname}
+                    onChange={(e)=>setSname(e.target.value)} 
+                  />
+                </FormControl>
+  
+                <FormControl mt={4}>
+                  <FormLabel htmlFor="phone">Phone</FormLabel>
+                  <Input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number"
+                    aria-describedby="phone-helper-text"
+
+                  />
+                </FormControl>
+              </form>
+            </ModalBody>
+  
+            <ModalFooter>
+            <Button variantColor="teal" mr={3} onClick={handleSubmitSignup}>
+              Signup
+            </Button>
+            <Link  onClick={() => setOne(!one)}> {on?"Signup":"login"}</Link>
+          </ModalFooter>
+          </ModalContent>}
+        </Modal>
     </Box>
   );
 };

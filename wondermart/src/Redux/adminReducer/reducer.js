@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
         isLoading: false,
         isError: true,
       };
-      case types.GET_USERS_REQUEST:
+    case types.GET_USERS_REQUEST:
       return {
         ...state,
         isLoading: true,

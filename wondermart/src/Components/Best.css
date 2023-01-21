@@ -6,7 +6,7 @@
     
 }
 
-.product-container {
+.best-container {
     padding: 0 10px;
     display: flex;
     overflow-x: hidden;
@@ -15,7 +15,6 @@
     
     background-color: #F7F7F7;
     border-radius: 20px;
-    margin-top: 30px;
 }
 
 /* .pre-btn,

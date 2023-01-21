@@ -1,30 +1,29 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import "../AdminStyles/AdminSideHomePage.css";
+import { AdminSideNavbar } from "../AdminPages/AdminSideNavbar";
+import { AdminSideSingleUser } from "../AdminPages/AdminSideSingleUser";
+import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../Redux/adminReducer/action";
-import { AdminSideNavbar } from "../../page/AdminPages/AdminSideNavbar";
-import { AdminSideSingleAdminPage } from "../../page/AdminPages/AdminSideSingleAdminPage";
+import { useEffect } from "react";
 import loading from "../AdminAssets/adminloading.gif";
 
 
-const AdminSideHomePage = () => {
+const AdminSideUsers = () => {
 
     const dispatch = useDispatch();
-    const admins = useSelector((store) => store.adminReducer.users);
+    const users = useSelector((store) => store.adminReducer.users);
     const Loading = useSelector((store) => store.adminReducer.isLoading);
 
 
     useEffect(() => {
-        if (admins.length === 0) {
+        if (users.length === 0) {
             dispatch(getUsers());
         }
-    }, [admins.length, dispatch]);
-
+    }, [users.length, dispatch]);
 
     return (
         <>
             <div>
-                <div className="admin_heading">Wondermart Admins</div>
+                <div className="admin_heading">Wondermart Users</div>
             </div>
             <div className="adminHomeContainer">
                 <div>
@@ -50,22 +49,20 @@ const AdminSideHomePage = () => {
                             color: "blue",
                             display: "flex",
                             justifyContent: "center",
-                            fontSize: "150%",
-                            marginTop: "5%"
+                            fontSize: "120%"
                         }}>Please wait loading...</h1>
                     </div>
                 </div> : <></>
                 }
                 <div className="admin_grid_container">
                     {
-                        admins.length && admins.filter(item => item.adminID === "wondermart").map((item) => {
+                        users.length && users.map((item) => {
                             return (
-                                <AdminSideSingleAdminPage
+                                <AdminSideSingleUser
                                     key={item._id}
                                     id={item._id}
                                     username={item.username}
                                     email={item.email}
-                                    adminID={item.adminID}
                                 />
                             );
                         })
@@ -76,4 +73,4 @@ const AdminSideHomePage = () => {
     );
 };
 
-export { AdminSideHomePage };
+export { AdminSideUsers };

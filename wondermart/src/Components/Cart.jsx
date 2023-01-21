@@ -32,30 +32,36 @@ const Cart = () => {
           <Button bg='#cc0000' _hover={{ bg: "#EF3C3C" }} color={"white"} p="10px 65px">Checkout</Button>
         </Box>
         <TableContainer>
-        <Table variant='simple'>
-         <Text textAlign={"left"}  m="2% 2% 2% 0">This is Cart Item Table</Text>
-        
-         <hr width="10%"
-        size="100" color="blue"
-        noshade /> 
-          <Thead>
-            <Tr>
-              <Th>Items  (5 items)</Th>
-              <Th>Quantity</Th>
-              <Th isNumeric>Sub-total</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-         
-            {
-              product.map((ele) => <SingleCart key={ele.id} id={ele.id} name = {ele.name}  img={ele.img} price={ele.price} strikePrice={ele.strikePrice} Qty={ele.Qty} />)
-            }
-          </Tbody>
-        </Table>
-      </TableContainer>
+          <Table variant='simple'>
+            <Text textAlign={"left"} m="2% 2% 2% 0">This is Cart Item Table</Text>
+
+            <hr
+              className="mb-4"
+              style={{
+                height: "2px",
+                width: "10%",
+                backgroundColor: "#ff6517",
+                opacity: 1,
+              }}
+            />
+            <Thead>
+              <Tr>
+                <Th>Items  (5 items)</Th>
+                <Th>Quantity</Th>
+                <Th isNumeric>Sub-total</Th>
+              </Tr>
+            </Thead>
+            <Tbody m={"5% 1%"}>
+
+              {
+                product.map((ele) => <SingleCart key={ele.id} id={ele.id} name={ele.name} img={ele.img} price={ele.price} strikePrice={ele.strikePrice} Qty={ele.Qty} />)
+              }
+            </Tbody>
+          </Table>
+        </TableContainer>
       </Box>
 
-     
+
     </Box>
   )
 }

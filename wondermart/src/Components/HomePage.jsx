@@ -18,14 +18,20 @@ import AnotherSlider from "./AnotherSlider";
 
 import Imagecarousel from "./Imagecarousel.js";
 import Best from "./Best.js";
+import SimpleSlider from "./SlickCarousel";
+
 
 
 const HomePage = () => {
   return (
     <Box>
+      
+    
       <Box w="100%">
         <Slider />
       </Box>
+      
+      
       <Box w="80%" margin="auto">
         <Grid
           templateColumns={{ md: "repeat(6, 1fr)", base: "repeat(2, 1fr)" }}
@@ -124,7 +130,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Imagecarousel />
+        <Best />
 
         <Box
           borderBottom="1px solid #DEDEDE"
@@ -733,12 +739,12 @@ const HomePage = () => {
             </Text>
           </Box>
         </Box>
-        <Box h="400px" border="1px solid red" borderRadius="20px" mt="20px">
+        <Box h={{md:"400px"}} border="1px solid red" borderRadius="20px" mt="20px">
           <Image src="https://www.bigbasket.com/media/uploads/banner_images/hp_bbw_c_400_web_wellness_banner_1_dec_w2_14012023.jpg?tr=w-1200,q=80" alt="banner" borderRadius="20px"/>
 
         </Box>
-        <Box h="900px" border="1px solid red" mt="40px" pl="100px" pr="100px">
-          <Text fontWeight="bold" textAlign="start">bigbasket – online grocery store</Text>
+        <Box h="900px" border="1px solid red" mt="40px" pl={{md:"100px"}} pr={{md:"100px"}} display={{base:"none",md:"block"}}>
+          <Text fontWeight="bold" textAlign="start" >bigbasket – online grocery store</Text>
           <Text textAlign="start" >Did you ever imagine that the freshest of fruits and vegetables, top quality pulses and food grains, dairy products and hundreds of branded items could be handpicked and delivered to your home, all at the click of a button? India’s first comprehensive online megastore, bigbasket.com, brings a whopping 20000+ products with more than 1000 brands, to over 4 million happy customers. From household cleaning products to beauty and makeup, bigbasket has everything you need for your daily needs. bigbasket.com is convenience personified We’ve taken away all the stress associated with shopping for daily essentials, and you can now order all your household products and even buy groceries online without travelling long distances or standing in serpentine queues. Add to this the convenience of finding all your requirements at one single source, along with great savings, and you will realize that bigbasket- India’s largest online supermarket, has revolutionized the way India shops for groceries. Online grocery shopping has never been easier. Need things fresh? Whether it’s fruits and vegetables or dairy and meat, we have this covered as well! Get fresh eggs, meat, fish and more online at your convenience. Hassle-free Home Delivery options
 
 We deliver to 25 cities across India and maintain excellent delivery times, ensuring that all your products from groceries to snacks branded foods reach you in time.

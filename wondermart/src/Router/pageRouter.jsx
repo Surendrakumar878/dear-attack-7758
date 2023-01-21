@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes,Route} from 'react-router-dom'
 import Cart from '../Components/Cart'
-import HomePage from '../Components/HomePage'
+import HomePage from '../Components/Design/HomePage'
 // import { Navbar } from '../Components/navabar/Navbar'
 import Products from '../Components/Products'
 import { AdminSideHomePage } from "../page/AdminPages/AdminSideHomePage";
@@ -17,7 +17,11 @@ function PageRouter() {
     <Routes>
         <Route path="/" element={<HomePage/>}/>
         
+<<<<<<< HEAD
+        <Route path="/nav" element={<Navbar/>}/>
+=======
         {/* <Route path="/nav" element={<Navbar/>}/> */}
+>>>>>>> 56db8e7fd8659c395f946d27652642f218a10a30
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/cart" element={<Cart/>}/>

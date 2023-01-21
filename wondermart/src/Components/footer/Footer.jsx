@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Text, Image } from "@chakra-ui/react";
+import { Box, Text, Image, Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -14,12 +15,12 @@ export const Footer = () => {
     >
       <Box
         display="flex"
-        borderBottom="1px solid red"
+        
         h="500px"
         pl="50px"
         pr="30px"
       >
-        <Box w="32%" pl="100px" pt="30px">
+        <Box w="32%" pl="100px" pt="30px" borderBottom="1px dotted #FFFFFF">
           <Box color="white" lineHeight="30px">
             <Text>Bigbasket</Text>
             <Text>About Us</Text>
@@ -35,7 +36,7 @@ export const Footer = () => {
             <Text>bbnow</Text>
           </Box>
         </Box>
-        <Box w="32%" pt="30px" pl="100px">
+        <Box w="32%" pt="30px" pl="100px" borderBottom="1px dotted #FFFFFF">
           <Box color="white" textAlign="left">
             <Text>Help</Text>
             <Text>FAQs</Text>
@@ -45,38 +46,39 @@ export const Footer = () => {
             <Text>Vendor Connect</Text>
           </Box>
         </Box>
-        <Box w="32%" pl="100px">
-          <Image src="https://i.ibb.co/gM7mb15/imageedit-2-2956265302.png" h="100px" w="200px" borderRadius="20px" mb="20px" />
+        <Box w="32%" pl="100px" borderBottom="1px dotted #FFFFFF">
+          <Image src="https://i.ibb.co/gM7mb15/imageedit-2-2956265302.png" h="100px" w="200px" borderRadius="20px" mb="20px"  />
           <Box display="flex" gap="30px">
-            <Image
+            <a href="https://www.facebook.com/Bigbasketcom/"><Image
               src="https://cdn-icons-png.flaticon.com/128/733/733547.png"
               alt="insta"
               w="30px"
               h="30px"
-            />
-            <Image
+            /></a>
+            <a href="https://www.instagram.com/bigbasketcom/"><Image
               src="https://cdn-icons-png.flaticon.com/128/733/733558.png"
               alt="insta"
               w="30px"
               h="30px"
-            />
-            <Image
+            /></a>
+            <a href="https://twitter.com/Bigbasket_com"><Image
               src="https://cdn-icons-png.flaticon.com/128/733/733579.png"
               alt="insta"
               w="30px"
               h="30px"
-            />
-            <Image
+            /></a>
+            <a href="https://in.pinterest.com/bigbasketcom/"><Image
               src="https://cdn-icons-png.flaticon.com/128/145/145808.png"
               alt="insta"
               w="30px"
               h="30px"
-            />
+            /></a>
           </Box>
-          <Text color="white" mt="20px">Vendor Connect</Text>
+          <Text color="white" mt="20px" mb="10px">Vendor Connect</Text>
+          <Button h="25px" background="black" _hover={{background:"#FFFFFF",color:'black'}} color="white" >Become seller</Button>
         </Box>
       </Box>
-      <Box pl="200px" pr="100px" lineHeight="30px" borderBottom="1px solid red">
+      <Box pl="200px" pr="100px" lineHeight="30px" borderBottom="1px dotted white">
         <Text
           textAlign="center"
           color="white"
@@ -185,7 +187,7 @@ export const Footer = () => {
       </Box>
       <Box
         display="flex"
-        borderBottom="1px solid red"
+        borderBottom="1px dotted white"
         h="300px"
         pl="50px"
         pr="30px"

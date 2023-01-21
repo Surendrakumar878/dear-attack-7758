@@ -16,7 +16,7 @@ function PageRouter() {
   return (
     <Routes>
         <Route path="/" element={<HomePage/>}/>
-        Navbar
+        
         <Route path="/nav" element={<Navbar/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>

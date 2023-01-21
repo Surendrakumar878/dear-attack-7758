@@ -3,6 +3,7 @@ import './App.css';
 import PageRouter from './Router/pageRouter'
 import { Navbar } from './Components/navabar/Navbar';
 import { Footer } from './Components/footer/Footer';
+import { Box } from '@chakra-ui/react';
 
 
 

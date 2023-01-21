@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const { connection } = require("./config/db");
-const { AuthValidator } = require("./middlewares/Auth.middleware");
 const { userRouter } = require("./routes/User.route");
 const { productRouter } = require("./routes/Product.route");
 const { cartRouter } = require("./routes/Cart.route");
@@ -13,7 +12,6 @@ app.use(cors({
 
 app.use(express.json());
 app.use("/users", userRouter);
-app.use(AuthValidator);
 app.use("/products", productRouter);
 app.use("/cart", cartRouter);
 

@@ -1,7 +1,11 @@
 const express = require("express");
+const { AuthValidator } = require("../middlewares/Auth.middleware");
 const { CartModel } = require("../models/Cart.model");
 const { ProductModel } = require("../models/Products.model");
 const cartRouter = express.Router();
+
+
+cartRouter.use(AuthValidator);
 
 
 cartRouter.get("/cartItems", async (req, res) => {

@@ -1,4 +1,5 @@
 const express = require("express");
+const { AuthValidator } = require("../middlewares/Auth.middleware");
 const { ValidationForProducts } = require("../middlewares/ValidationForProducts");
 const { ProductModel } = require("../models/Products.model");
 const productRouter = express.Router();
@@ -30,14 +31,32 @@ productRouter.get("/", async (req, res) => {
 });
 
 
+
+// validation 
+productRouter.use(AuthValidator);
+
+// get by ID
+productRouter.get("/getById/:id", async (req, res) => {
+    let id = req.params.id;
+    try {
+        const productItem = await ProductModel.findById({ "_id": id });
+        res.send(productItem);
+    }
+    catch (err) {
+        console.log(err);
+        res.send({ "err": "Something went wrong" })
+    }
+});
+
+
 // Sorting Asc or Desc
 productRouter.get("/q", async (req, res) => {
     let query = req.query;
     try {
-        if(query.sortBy){
+        if (query.sortBy) {
             const sortedData = await ProductModel.find(query).sort({ price: query.sortBy });
             res.send(sortedData);
-        }else{
+        } else {
             const data = await ProductModel.find(query);
             res.send(data);
         }
@@ -47,6 +66,10 @@ productRouter.get("/q", async (req, res) => {
         res.send({ "err": "Something went wrong" })
     }
 });
+
+
+// Validation these operation could only be done by admin only
+productRouter.use(ValidationForProducts);
 
 
 // Insert many
@@ -62,22 +85,19 @@ productRouter.post("/addmany", async (req, res) => {
     }
 });
 
+
 // All product delete
 productRouter.delete("/deletemany", async (req, res) => {
     try {
         await ProductModel.deleteMany();
         res.send("All Products deleted!");
-    } 
+    }
     catch (err) {
         console.log(err);
         res.send({ msg: "something went wrong" });
     }
-})
+});
 
-
-
-// Validation these operation could only be done by admin only
-productRouter.use(ValidationForProducts);
 
 productRouter.post("/add", async (req, res) => {
     const payload = req.body;

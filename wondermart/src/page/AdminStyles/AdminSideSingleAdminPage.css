@@ -84,6 +84,7 @@
 }
 
 @media all and (min-width: 281px) and (max-width: 400px) {
+    
     .single_admin_container div:first-child img {
         width: 50%;
     }

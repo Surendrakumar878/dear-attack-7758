@@ -1,6 +1,5 @@
-# Steps and End-points:-
+# Steps and End-points:- `https://rich-red-indri-tie.cyclic.app/`
 
-### Base url:-  `https://rich-red-indri-tie.cyclic.app`
 ### Product end point:-
   - Add product:- `baseurl` + `/products/add`
   - Update product:- `baseurl` + `/products/update/:id`
@@ -10,6 +9,7 @@
   - Get products by any query:- `baseurl` + `/products/q?brand=Milky Mist`
   - Get sorted products in descending order:-  `baseurl` + `products/q?sortBy=desc`
   - Get sorted products in ascending order:-  `baseurl` + `products/q?sortBy=asc`
+  - Get products by Id: `baseurl` + `products/getById/:id`
 
 
 ### User endpoints:-
@@ -19,6 +19,7 @@
   - Update user:- `baseurl` + `/users/update/:id`
   - Update user:- `baseurl` + `/users/delete/:id`
   - Get users (all users and admin):- `base url` + `/users/`
+  - Get profile of user by userkey which will be send to front end while login process along with token :- `userurl` + `users/profile/:userKey`
 
 ### Cart endpoint:- 
   - Get cart items: `baseurl` + `/cart/cartItems`

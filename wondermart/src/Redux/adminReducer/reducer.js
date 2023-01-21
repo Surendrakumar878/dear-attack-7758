@@ -3,6 +3,8 @@ import * as types from "./actionTypes";
 const initialState = {
   products: [],
   users: [],
+  productItem: [],
+  userprofile: [],
   isLoading: false,
   isError: false,
 };
@@ -47,6 +49,32 @@ const reducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         isError: true,
+      };
+    case types.GET_PRODUCT_BY_ID_REQUEST:
+      return {
+        ...state,
+      };
+    case types.GET_PRODUCT_BY_ID_SUCCESS:
+      return {
+        ...state,
+        productItem: payload,
+      };
+    case types.GET_PRODUCT_BY_ID_FAILURE:
+      return {
+        ...state,
+      };
+    case types.GET_USER_PROFILE_REQUEST:
+      return {
+        ...state,
+      };
+    case types.GET_USER_PROFILE_SUCCESS:
+      return {
+        ...state,
+        userprofile: payload,
+      };
+    case types.GET_USER_PROFILE_FAILURE:
+      return {
+        ...state,
       };
     default:
       return state;

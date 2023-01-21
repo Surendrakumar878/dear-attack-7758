@@ -4,10 +4,14 @@ const bcrypt = require("bcrypt");
 const { UserModel } = require("../models/user.model");
 const { Validator } = require("../middlewares/Validator.middleware");
 const { addAdminId } = require("../middlewares/addAdminId.middleware");
+const { AuthValidator } = require("../middlewares/Auth.middleware");
+const { ValidationForProducts } = require("../middlewares/ValidationForProducts");
 require('dotenv').config();
+
 
 const userRouter = express.Router();
 userRouter.use(addAdminId);
+
 
 userRouter.post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -20,7 +24,7 @@ userRouter.post("/login", async (req, res) => {
 
                     if (result) {
                         const token = jwt.sign({ userID: user._id, adminID: user.adminID }, process.env.key);
-                        res.send({ msg: "Admin Login Successful", token });
+                        res.send({ msg: "Admin Login Successful","adminID": user.adminID, "userKey": user._id, token });
                     }
                     else {
                         res.send("Wrong admin credential!");
@@ -32,14 +36,13 @@ userRouter.post("/login", async (req, res) => {
 
                     if (result) {
                         const token = jwt.sign({ userID: user._id }, process.env.key);
-                        res.send({ msg: "User Login Successful", token });
+                        res.send({ msg: "User Login Successful", "userKey": user._id, token });
                     }
                     else {
                         res.send("Wrong user credential!");
                     }
                 });
             }
-
         }
         else {
             res.send("Wrong credential!");
@@ -63,46 +66,6 @@ userRouter.get("/", async (req, res) => {
         console.log(err);
     }
 });
-
-
-userRouter.delete("/deletemany", async (req, res) => {
-    try {
-        await UserModel.deleteMany();
-        res.send("All users deleted!");
-    }
-    catch (err) {
-        console.log(err);
-        res.send({ msg: "something went wrong" });
-    }
-});
-
-
-userRouter.patch("/update/:id", async (req, res) => {
-    let id = req.params.id;
-    let payload = req.body;
-    try {
-        await UserModel.findByIdAndUpdate({ "_id": id }, payload);
-        res.send("User updated");
-    }
-    catch (err) {
-        res.send("Something went wrong");
-        console.log(err);
-    }
-});
-
-
-userRouter.delete("/delete/:id", async (req, res) => {
-    let id = req.params.id;
-    try {
-        await UserModel.findByIdAndDelete({ "_id": id });
-        res.send("User deleted");
-    }
-    catch (err) {
-        res.send("Something went wrong");
-        console.log(err);
-    }
-});
-
 
 userRouter.use(Validator);
 
@@ -165,6 +128,62 @@ userRouter.post("/user/signup", async (req, res) => {
     }
 });
 
+
+userRouter.use(AuthValidator);
+userRouter.use(ValidationForProducts);
+
+
+userRouter.get("/profile/:userKey", async (req, res) => {
+    const { userKey } = req.params;
+    const token = req.headers["authorization"].split(" ")[0];
+    console.log("Userkey:", userKey);
+    try {
+        const singleUser = await UserModel.findById({ "_id": userKey });
+        res.send(singleUser);
+    }
+    catch (err) {
+        res.send("Something went wrong!");
+        console.log(err);
+    }
+});
+
+userRouter.delete("/deletemany", async (req, res) => {
+    try {
+        await UserModel.deleteMany();
+        res.send("All users deleted!");
+    }
+    catch (err) {
+        console.log(err);
+        res.send({ msg: "something went wrong" });
+    }
+});
+
+
+userRouter.patch("/update/:id", async (req, res) => {
+    let id = req.params.id;
+    let payload = req.body;
+    try {
+        await UserModel.findByIdAndUpdate({ "_id": id }, payload);
+        res.send("User updated");
+    }
+    catch (err) {
+        res.send("Something went wrong");
+        console.log(err);
+    }
+});
+
+
+userRouter.delete("/delete/:id", async (req, res) => {
+    let id = req.params.id;
+    try {
+        await UserModel.findByIdAndDelete({ "_id": id });
+        res.send("User deleted");
+    }
+    catch (err) {
+        res.send("Something went wrong");
+        console.log(err);
+    }
+});
 
 module.exports = {
     userRouter

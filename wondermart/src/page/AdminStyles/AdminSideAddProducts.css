@@ -29,7 +29,7 @@
 
 .AdminSideProductAddContainer .admin_side_form_box>div:first-child {
     width: 17%;
-    height: 250px;
+    height: 50vh;
     padding-left: 1%;
     background-color: rgb(132, 172, 241);
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
@@ -41,7 +41,7 @@
 }
 
 .AdminSideProductAddContainer .admin_side_form_box>div:last-child {
-    width: 80%;
+    width: 82%;
 }
 
 .adminSideProductAddBox {
@@ -68,8 +68,8 @@
     border-radius: 10px;
     color: black;
     background-color: white;
+    border: 2px solid rgb(125, 2, 2);
 }
-
 
 .AdminSideProductAddContainer .productAddBox2 {
     width: 40%;
@@ -77,6 +77,7 @@
     padding: 5%;
     border-radius: 20px;
     background-color: white;
+    border: 2px solid rgb(248, 2, 2);
 }
 
 @media all and (min-width: 401px) and (max-width: 650px) {
@@ -87,11 +88,9 @@
 
     .AdminSideProductAddContainer .admin_side_form_box>div:first-child {
         width: 25%;
-        height: 170px;
+        height: 50vh;
         padding-left: 1%;
-        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     }
-
 
     .AdminSideProductAddContainer .parendFormBox {
         display: flex;
@@ -106,7 +105,6 @@
 
     .adminSideProductAddBox {
         margin: auto;
-        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
         display: flex;
         flex-direction: column;
     }
@@ -122,7 +120,6 @@
         color: black;
         margin: auto;
     }
-
 
     .AdminSideProductAddContainer .productAddBox2 {
         width: 90%;
@@ -163,10 +160,8 @@
         flex-direction: column;
     }
 
-
     .adminSideProductAddBox {
         margin: auto;
-        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
         display: flex;
         flex-direction: column;
     }
@@ -182,7 +177,6 @@
         color: black;
         margin: auto;
     }
-
 
     .AdminSideProductAddContainer .productAddBox2 {
         width: 80%;

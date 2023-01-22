@@ -1,6 +1,8 @@
 import React from 'react'
 import {Routes,Route} from 'react-router-dom'
 import Cart from '../Components/Cart'
+import {Checkout} from '../Components/Checkout'
+import {Pay} from '../Components/Pay'
 import HomePage from '../Components/HomePage'
 // import { Navbar } from '../Components/navabar/Navbar'
 import Products from '../Components/Products'
@@ -11,6 +13,7 @@ import { AdminSideProductEditPage } from "../page/AdminPages/AdminSideProductEdi
 import  Login from '../page/login/Login'
 import { Signup } from '../page/signup/Signup'
 import Navbar from '../Components/navabar/Subnavbar'
+import Success from '../Components/Success'
 
 function PageRouter() {
   return (
@@ -21,6 +24,11 @@ function PageRouter() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/pay" element={<Pay/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/success" element={<Success/>}/>
+
         <Route path="/products" element={<Products/>}/>
         <Route path="/admin_home_page" element={<AdminSideHomePage />} />
         <Route path='/admin_side_products' element={<AdminSideProducts />} />

@@ -7,6 +7,7 @@ import {
   FormHelperText,
 } from '@chakra-ui/react'
 import { Payment } from './Payments'
+
  export const Pay = () => {
   return (
     <Box w="100%" height={"auto"} bg="" p="5%">
@@ -15,16 +16,6 @@ import { Payment } from './Payments'
         <Box>
         <Heading fontSize={"20px"} fontWeight="bold" mb="2%" boxShadow={"rgba(0, 0, 0, 0.35) 0px 5px 15px;"} p="2% 1%" borderRadius={"10px"} textDecoration="underline">Payment Options</Heading>
         </Box>
-        {/* <Box bg="" display={"flex"}  alignItems="center"  justifyContent={"space-between"} p="2% 1%">
-          <Box bg="gray" p="2% 1%" border={"1px solid black"}>
-          <Heading fontSize={"18px"} >Payment Options</Heading>
-          <Text>Apply voucher code,if applicable, to aval the offer</Text>
-          </Box>
-          <Box bg="gray" p="2% 1%" border={"1px solid black"}>
-          <Heading fontSize={"18px"} >Payment Options</Heading>
-          <Text>Apply voucher code,if applicable, to aval the offer</Text>
-          </Box>
-        </Box> */}
         <Payment/>
       </Box>
     </Box>

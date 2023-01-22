@@ -62,6 +62,7 @@ export const Navbar = () => {
     "Soothers & Teethers",
   ]);
   const [category, setCategory] = useState([
+    "products",
     "Fruits & Vegetables",
     "Foodgrains, Oil & Masala",
     "Bakery, Cakes & Dairy",
@@ -271,15 +272,7 @@ export const Navbar = () => {
 
 
 
-  useEffect(()=>{
-axios.get("https://rich-red-indri-tie.cyclic.app/products/",{
-  params:{
-    category:"bakery"
-  }
-}).then((e)=>{
-  console.log(e.data)
-})
-  },[])
+  
 
   return (
     <Box position="fixed" zIndex={100} w={{ lg: "100%", sm: "100%", md: "100%" }}>
@@ -301,11 +294,12 @@ axios.get("https://rich-red-indri-tie.cyclic.app/products/",{
   </MenuList>
 </Menu>
           </Box>
-          <Box w="20%">
+         <NavLink to="/"> <Box w="20%">
             {" "}
             <Image w={{ lg: "60%", sm: "80%", md: "80%" }} ml={{ lg: "100px", sm: "010px", md: "010px" }} src="assets/logo/logo1.png" alt="" />
             {/* <Text size={20} color={"black"} >wondermart</Text>  */}{" "}
           </Box>
+          </NavLink>
           <Box w="60%">
             <Box w={{ lg: "100%", sm: "100%", md: "100%" }} border="1px solid green" borderRadius={"8px"}>
               <Box display={"flex"} w={{ lg: "100%", sm: "100%", md: "100%" }} p="10px">
@@ -548,7 +542,7 @@ axios.get("https://rich-red-indri-tie.cyclic.app/products/",{
               p="10px"
             >
               {category.map((i) => (
-                <Button
+               <NavLink to="/products" ><Button
                   onMouseEnter={() => {
                     subnav(i);
                   }}
@@ -557,6 +551,7 @@ axios.get("https://rich-red-indri-tie.cyclic.app/products/",{
                 >
                   {i}
                 </Button>
+                </NavLink>
               ))}
             </Box>
             <Box

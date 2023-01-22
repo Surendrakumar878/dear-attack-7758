@@ -2,7 +2,8 @@ import { Button,Text,Box ,useToast} from '@chakra-ui/react'
 import axios from 'axios';
 import React,{useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { cart, updateCartQuantity } from '../Redux/cartReducer/action';
+import { updateCartQuantity } from '../../Redux/cartReducer/action';
+// import { cart, updateCartQuantity } from '../Redux/cartReducer/action';
 
 function Quantity({Qty,id}) {
   // console.log("QUANTITY ID",id);

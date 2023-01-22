@@ -13,10 +13,11 @@ import {
   TableContainer,
 } from '@chakra-ui/react'
 import {MdDelete} from "react-icons/md"
-import Quantity from "../Components/Quantity"
+// import Quantity from "../Components/Quantity"
 import { useDispatch } from 'react-redux'
 import { cart, deleteItem } from '../Redux/cartReducer/action'
 import { useParams } from 'react-router-dom'
+import Quantity from './Design/Quantity'
 
 const SingleCart = ({id, name,img, price, strikePrice, Qty} ) => {
     // const id = useParams()

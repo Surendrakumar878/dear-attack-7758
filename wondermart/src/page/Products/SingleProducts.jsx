@@ -20,10 +20,31 @@ import {
 } from "@chakra-ui/react";
 import ReactImageMagnify from "react-image-magnify";
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart, getSingleProduct } from "../../Redux/productsReducer/action";
+import { useToast } from "@chakra-ui/react";
 
 
 const SingleProducts = () => {
+  const toast = useToast()
+  const { id } = useParams();
+  console.log(id,"single")
+  
+  const {singleData  }=useSelector((store)=>store.productReducer)
+  const dispatch = useDispatch();
+
   const [count, setCount] = useState(1);
+
+  useEffect(()=>{
+    dispatch(getSingleProduct(id))
+  },[dispatch])
+
+  
+
+  console.log(singleData.name);
+
   return (
     <div className="w-[100%]">
       {/* top section */}
@@ -41,13 +62,13 @@ const SingleProducts = () => {
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-              <BreadcrumbLink className="hover:text-green-600" href="#">
-                Products
+              <BreadcrumbLink className="hover:text-green-600" href="/products">
+                {singleData.category}
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink className="hover:text-green-600" href="#">
-                Onion
+              <BreadcrumbLink className="hover:text-green-600" href="">
+              {singleData.name}
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
@@ -157,12 +178,12 @@ const SingleProducts = () => {
                   smallImage: {
                     alt: "Wristwatch by Ted Baker London",
                     isFluidWidth: true,
-                    src: `https://www.bigbasket.com/media/uploads/p/l/40075537_5-fresho-onion.jpg`,
+                    src: `${singleData.ImgSrc}`,
                     width: 350,
                     height: 280,
                   },
                   largeImage: {
-                    src: `https://www.bigbasket.com/media/uploads/p/l/40075537_5-fresho-onion.jpg`,
+                    src: `${singleData.ImgSrc}`,
                     width: 1400,
                     height: 1800,
                   },
@@ -176,7 +197,7 @@ const SingleProducts = () => {
             </div>
             <img
               className="w-[380px] h-[300px] md:h-full md:w-full px-3 block md:hidden"
-              src="https://www.bigbasket.com/media/uploads/p/l/40075537_5-fresho-onion.jpg"
+              src={singleData.ImgSrc}
               alt=""
             />
           </div>
@@ -186,15 +207,15 @@ const SingleProducts = () => {
               <p className="text-xs border-b-2 w-[38px] border-gray-600 hover:border hover:scale-105 duration-300 cursor-pointer origin-right">
                 Fresho
               </p>
-              <h1 className="mt-1">Fresho Onion, 2 kg</h1>
+              <h1 className="mt-1">{singleData.name}</h1>
               <p className="text-[10px] text-gray-500 mt-2 font-semibold">
-                MRP: <span className=" line-through">Rs 77.25</span>
+                MRP: <span className=" line-through">Rs {singleData.mrp}</span>
               </p>
               <p className="text-sm font-bold text-gray-700">
-                Price:Rs 50{" "}
+                Price:Rs {singleData.price}{" "}
                 <span className="text-[10px] font-semibold">(Rs.25/kg)</span>
               </p>
-              <p className="text-xs font-semibold text-red-400">You Save:35%</p>
+              <p className="text-xs font-semibold text-red-400">You Save:{singleData.offers}</p>
               <p className="text-[10px] font-semibold text-gray-400">
                 (Inclusive of all taxes)
               </p>
@@ -224,7 +245,17 @@ const SingleProducts = () => {
                 </div>
 
                 <div className="border-2 border-[#84c225] px-3 py-2 rounded-md bg-[#84c225] hover:shadow-xl md:shadow-[#84c225]">
-                  <button className="text-xs md:text-xs lg:text-sm text-white font-bold">
+                  <button className="text-xs md:text-xs lg:text-sm text-white font-bold" onClick={()=>{
+                    dispatch(addProductToCart(singleData._id,count))
+                    .then(() => toast({
+                      title: 'Product Added!',
+                      description: "We've added your product.",
+                      status: 'success',
+                      duration: 2000,
+                      position: "top",
+                      isClosable: true,
+                  }))
+                  }} >
                     ADD TO BASKET
                   </button>
                 </div>
@@ -254,12 +285,12 @@ const SingleProducts = () => {
                   <div className="flex justify-between items-center mt-5 text-xs text-gray-500 bg-[#e6f3d3] rounded-md h-[60px]  font-semibold hover:shadow-md cursor-pointer">
                     <div className="px-2">
                       {" "}
-                      <p className="text-gray-600">2 kg</p>{" "}
+                      <p className="text-gray-600">{singleData.weight}</p>{" "}
                     </div>
                     <div className="flex gap-3">
-                      <p>Rs 50</p>
-                      <p className="line-through">MRP Rs 77.5</p>
-                      <p className="text-red-500">35% Off</p>
+                      <p>Rs {singleData.price}</p>
+                      <p className="line-through">MRP Rs {singleData.mrp}</p>
+                      <p className="text-red-500">{singleData.offers}</p>
                     </div>
                     <div className="w-[10%] h-[60px] justify-center items-center flex text-white bg-[#84c225] rounded-tr-md rounded-br-md ">
                       <h1 className="">
@@ -314,7 +345,7 @@ const SingleProducts = () => {
       {/* about sec */}
       <div className=" mt-5 px-2 mb-6">
         <div className="w-[100%] md:w-[80%] mx-auto">
-        <h1 className="text-2xl mb-3 mt-2 text-gray-500">Fresho Onion, 2 kg</h1>
+        <h1 className="text-2xl mb-3 mt-2 text-gray-500">{singleData.name}</h1>
           <Accordion allowMultiple className="text-sm text-gray-500">
             <AccordionItem>
               {({ isExpanded }) => (

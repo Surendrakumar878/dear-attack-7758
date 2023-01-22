@@ -1,3 +1,4 @@
+import { ArrowRightIcon, ChevronRightIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Avatar,
   Box,
@@ -5,9 +6,14 @@ import {
   Center,
   FormControl,
   FormLabel,
+  IconButton,
   Image,
   Input,
   Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -20,8 +26,9 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
 // import { Button } from "bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { ModalBody, ModalHeader } from "react-bootstrap";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -261,46 +268,84 @@ export const Navbar = () => {
 
   let token = localStorage.getItem("token") || [];
   let admin = localStorage.getItem("adminkey") || [];
-  return (
-    <Box position="fixed" zIndex={1} w={{ lg: "100%", sm: "100%", md: "100%" }}>
-      <Box bg="white" p="20px" w="100%" color={"green"} m="auto">
-        <Box display="flex" w={"100%"}>
-          <Box w="20%"  >
-            {" "}
-            <Image w="60%" ml='100px' src="assets/logo/logo1.png" alt="" />
-            {/* <Text size={20} color={"black"} >wondermart</Text>  */}
-            {" "}
-          </Box>
-          <Box w="60%"> 
-          <Box w="100%" border="1px solid green" borderRadius={"8px"}>
-            <Box display={"flex"} w="100%" p="10px">
-              <FaSearch
-                style={{
-                  fontSize: "15px",
-                  marginTop: "5px",
 
-                  // paddingTop:"10px"
-                }}
-              />{" "}
-              <Input
-                fontSize={"15px"}
-                pl={5}
-                variant="unstyled"
-                placeholder="Search Product..."
-              />
-            </Box>{" "}
+
+
+  useEffect(()=>{
+axios.get("https://rich-red-indri-tie.cyclic.app/products/q",{
+  params:{
+    category:"bakery"
+  }
+}).then((e)=>{
+  console.log(e.data)
+})
+  },[])
+
+  return (
+    <Box position="fixed" zIndex={100} w={{ lg: "100%", sm: "100%", md: "100%" }}>
+      <Box bg="white" p="20px" w={{ lg: "100%", sm: "100%", md: "100%" }} color={"green"} m="auto">
+        <Box display="flex" w={{ lg: "100%", sm: "100%", md: "100%" }} alignItems="center">
+          <Box display={{ lg: "none", sm: "100%", md: "100%" }}>
+          <Menu>
+  <MenuButton
+    as={IconButton}
+    aria-label='Options'
+    icon={<HamburgerIcon />}
+    variant='outline'
+  />
+  <MenuList>
+  {category.map((el)=><MenuItem >
+      {el}
+    </MenuItem>)  }
+ 
+  </MenuList>
+</Menu>
           </Box>
-          </Box>
-          <Box w="20%" color="white">
+          <Box w="20%">
             {" "}
-            <Box fontSize={"13px"} pl="13px" pt="2px" pb="2px" bg={"#f7f7f7"} color="black" borderRadius={"8px"} w="60%" ml="10px">
+            <Image w={{ lg: "60%", sm: "80%", md: "80%" }} ml={{ lg: "100px", sm: "010px", md: "010px" }} src="assets/logo/logo1.png" alt="" />
+            {/* <Text size={20} color={"black"} >wondermart</Text>  */}{" "}
+          </Box>
+          <Box w="60%">
+            <Box w={{ lg: "100%", sm: "100%", md: "100%" }} border="1px solid green" borderRadius={"8px"}>
+              <Box display={"flex"} w={{ lg: "100%", sm: "100%", md: "100%" }} p="10px">
+                <FaSearch
+                  style={{
+                    fontSize: "15px",
+                    marginTop: "5px",
+
+                    // paddingTop:"10px"
+                  }}
+                />{" "}
+                <Input
+                  fontSize={"15px"}
+                  pl={5}
+                  variant="unstyled"
+                  placeholder="Search Product..."
+                />
+              </Box>{" "}
+            </Box>
+          </Box>
+          <Box w={{ lg: "20%", sm: "20%", md: "20%" }} display={{ lg:"block", sm: "none", md: "none" }} color="white">
+            {" "}
+            <Box
+              fontSize={{ lg: "13px", sm: "13px", md: "13px" }}
+              pl="13px"
+              pt="2px"
+              pb="2px"
+              bg={"#f7f7f7"}
+              color="black"
+              borderRadius={"8px"}
+              w={{ lg: "60%", sm: "60%", md: "60%" }}
+              ml="10px"
+            >
               <Text>Get it in 12 hrs</Text>
               <Text>Home: Mahalakshmi ...</Text>
             </Box>{" "}
           </Box>
           <Box
             className="drop"
-            w="10%"
+            w={{ lg: "10%", sm: "10%", md: "10%" }}
             // p={"8px"}
             textAlign={"center"}
             borderRadius={"8px"}
@@ -310,17 +355,19 @@ export const Navbar = () => {
             {token.length > 10 ? (
               // <Image src=""    onClick={() => setUser(!user)}/>
               <Avatar
-onClick={() => setUser(!user)}
-src="https://example.com/logo.png"
-  size="md"
-  borderWidth="3px"
-  borderColor="blue.500"
-  boxShadow="md"
-  rounded="full"
-  mr="80px"
-/>
+                onClick={() => setUser(!user)}
+                src="https://example.com/logo.png"
+                size={{ lg: "md", sm: "md", md: "md" }}
+                borderWidth="3px"
+                borderColor="blue.500"
+                boxShadow="md"
+                rounded="full"
+                mr="80px"
+              />
             ) : (
-              <button bg="black" onClick={onOpen}>Login/Signup</button>
+              <button fontSize={{ lg: "md", sm: "md", md: "md" }} bg="black" color="black" onClick={onOpen} mt="20px">
+                Login/Signup
+              </button>
             )}
           </Box>
 
@@ -339,86 +386,99 @@ src="https://example.com/logo.png"
               justifyContent="space-between"
               mt="10px"
               // border="1px solid green"
-              
             >
               <Box
-              borderRadius={"8px"}
-              bg="black"
+                borderRadius={"8px"}
+                bg="black"
                 // borderLeftRadius="8px"
-               w="16rem"
+                w="16rem"
                 color={"white"}
-             
                 display={"flex"}
                 flexDirection="column"
                 p="10px"
-              ><Box display={"flex"} >
-                <Button _hover={{ bg: "grey" }} bg={"none"}>
-                  My Account
-                </Button>
+              >
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Account
+                  </Button>
                 </Box>
-                <Box display={"flex"} >
-                <Button _hover={{ bg: "grey" }} bg={"none"}>
-                  My Basket
-                </Button>
-                <Button _hover={{ bg: "grey" }} bg={"none"}>0 Item</Button>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Basket
+                  </Button>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    0 Item
+                  </Button>
                 </Box>
-                <Box display={"flex"} >
-                <Button _hover={{ bg: "grey" }} bg={"none"}>
-                  My Orders
-                </Button>
-            
-                <Button _hover={{ bg: "grey" }} bg={"none"}>₹0</Button>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Orders
+                  </Button>
+
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    ₹0
+                  </Button>
                 </Box>
-                <Box display={"flex"} >
-                <Button _hover={{ bg: "grey" }} bg={"none"}>
-                  My Smart Basket
-                </Button>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Smart Basket
+                  </Button>
                 </Box>
-                <Box display={"flex"} >
-                <Button _hover={{ bg: "grey" }} bg={"none"}>
-                  My Wallet
-                </Button>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Wallet
+                  </Button>
                 </Box>
-                <Box display={"flex"} >
-                <Button _hover={{ bg: "grey" }} bg={"none"}>
-                  Contact Us
-                </Button>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    Contact Us
+                  </Button>
                 </Box>
-                <Box display={"flex"} >
-                {admin.length>=10? <NavLink to="/admin_home_page"><Button _hover={{ bg: "grey" }} bg={"none"}>
-                  Admin
-                </Button></NavLink> :<Button _hover={{ bg: "grey" }} bg={"none"}>
-                  user
-                </Button>}
+                <Box display={"flex"}>
+                  {admin.length >= 10 ? (
+                    <NavLink to="/admin_home_page">
+                      <Button _hover={{ bg: "grey" }} bg={"none"}>
+                        Admin
+                      </Button>
+                    </NavLink>
+                  ) : (
+                    <Button _hover={{ bg: "grey" }} bg={"none"}>
+                      user
+                    </Button>
+                  )}
                 </Box>
-                <Box display={"flex"} >
-                <Button _hover={{ bg: "grey" }} bg={"none"} onClick={() => {localStorage.setItem("token", "t")
-              localStorage.setItem("adminkey", "t")
-              }}>
-                  Logout
-                </Button>
+                <Box display={"flex"}>
+                  <Button
+                    _hover={{ bg: "grey" }}
+                    bg={"none"}
+                    onClick={() => {
+                      localStorage.setItem("token", "t");
+                      localStorage.setItem("adminkey", "t");
+                    }}
+                  >
+                    Logout
+                  </Button>
                 </Box>
               </Box>
             </Box>
           )}
-          <Box w="5%">
-          <Box w="100%"  bg={"red.300"} borderRadius={"8px"}>
-            {" "}
-            <Center p="15px">
+          <Box w="5%" display={{ lg: "block", sm: "none", md: "none" }}>
+            <Box w="100%" bg={"red.300"} borderRadius={"8px"}>
               {" "}
-              <FaShoppingBasket style={{ color: "white" }} />
-            </Center>{" "}
+              <Center p="15px">
+                {" "}
+                <FaShoppingBasket style={{ color: "white" }} />
+              </Center>{" "}
+            </Box>
           </Box>
-          </Box>
-
         </Box>
 
         {/* second Navbar */}
-        {/* ________________------------------------second Navbar ---------------------------------------------- */}
+        {/*-----------------------second Navbar ---------------------------------------------- */}
         <Box
           position="relative"
-          display="flex"
-          w={"100%"}
+          display={{ lg: "flex", sm:"none", md:"none" }}
+          w={{ lg: "100%", sm: "100%", md: "100%" }}
           justifyContent="space-around"
           color={"black"}
         >
@@ -427,6 +487,7 @@ src="https://example.com/logo.png"
             bg="#5e9400"
             _hover={{ bg: "#5e9400" }}
             color={"white"}
+           
           >
             Shop By category
           </Button>
@@ -447,7 +508,7 @@ src="https://example.com/logo.png"
             fresh-vegetables
           </Button>
           <Button variant="link" textDecoration={"none"} outline="none">
-            {">>"}
+         <ArrowRightIcon boxSize={3} />
           </Button>
         </Box>
         {/* ________________------------------------dropdown---------------------------------------------- */}
@@ -461,7 +522,7 @@ src="https://example.com/logo.png"
             right="0"
             bottom="0"
             left="210"
-            zIndex="9900000000"
+            zIndex={100}
             // bg="teal"
             display={"flex"}
             justifyContent="space-between"
@@ -470,7 +531,7 @@ src="https://example.com/logo.png"
             borderRadius={"8px"}
           >
             <Box
-             h="400px"
+              h="400px"
               borderLeftRadius="8px"
               w="16rem"
               color={"white"}

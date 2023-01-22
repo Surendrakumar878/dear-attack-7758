@@ -20,7 +20,7 @@ export const reducer = (state = initialState, action) => {
         }
         case types.USER_LOGIN_SUCCESS: {
             return {
-                ...state, isAuthLoading: false, isAuth: true, token: payload
+                ...state, isAuthLoading: false, isAuth:true, token: payload
             }
         }
         case types.USER_LOGIN_FAILURE: {

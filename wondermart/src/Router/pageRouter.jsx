@@ -13,6 +13,7 @@ import { Signup } from '../page/signup/Signup'
 import Navbar from '../Components/navabar/Subnavbar'
 
 import PrivateRouter from '../Components/PrivateRouter/PrivateRouter'
+import SingleProducts from '../page/Products/SingleProducts'
 
 
 function PageRouter() {

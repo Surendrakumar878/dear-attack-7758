@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 const PrivateRouter = ( {children}) => {
-    var isAuth  = useSelector((store)=>store.authReducer.isAuth)
+    var isAuth  = useSelector((store)=>{
+      console.log(store.authReducer)
+      return store.authReducer.isAuth
+    })
     console.log(isAuth)
     if(!isAuth){
       alert("please login")

@@ -2,7 +2,7 @@ import user from "../AdminAssets/user.png";
 import "../AdminStyles/AdminSideSingleAdminPage.css";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
-import { useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import { deleteUser, getUsers } from "../../Redux/adminReducer/action";
 
 const AdminSideSingleUser = ({ username, email, id }) => {

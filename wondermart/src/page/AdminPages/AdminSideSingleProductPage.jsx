@@ -2,7 +2,7 @@ import "../AdminStyles/AdminSideSingleProductPage.css";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import { deleteProduct, getProducts } from "../../Redux/adminReducer/action";
 
 const AdminSideSingleProductPage = ({

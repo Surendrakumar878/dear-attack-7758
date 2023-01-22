@@ -5,9 +5,16 @@ import { Navbar } from "./Components/navabar/Navbar";
 import { Footer } from "./Components/footer/Footer";
 import { Box } from "@chakra-ui/react";
 
+
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
+      <Box w="100%" bg="white" pb="120px"><Navbar/> </Box>
+      <PageRouter/>
+       <Footer/>
+     
+=======
       {/* <Navbar/>
       <PageRouter/> */}
 
@@ -19,6 +26,7 @@ function App() {
         <Navbar />{" "}
       </Box>
       <PageRouter />
+>>>>>>> master
     </div>
   );
 }

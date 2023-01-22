@@ -30,6 +30,10 @@ const dat = [
 ];
 
 const Products = () => {
+<<<<<<< HEAD
+
+  
+=======
   const [cat, setCat] = useState("");
  
   const data = useSelector((store) => store.productReducer.data);
@@ -54,6 +58,7 @@ const Products = () => {
     }
   }, [dispatch, data.length]);
 
+>>>>>>> master
   return (
     <div className="w-full">
       <div className="w-[100%] md:w-[100%] lg:w-[80%] mx-auto mt-5">

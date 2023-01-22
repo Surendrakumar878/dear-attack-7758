@@ -11,7 +11,9 @@ import { AdminSideProductEditPage } from "../page/AdminPages/AdminSideProductEdi
 import  Login from '../page/login/Login'
 import { Signup } from '../page/signup/Signup'
 import Navbar from '../Components/navabar/Subnavbar'
+
 import PrivateRouter from '../Components/PrivateRouter/PrivateRouter'
+
 
 function PageRouter() {
   return (
@@ -27,6 +29,7 @@ function PageRouter() {
         <Route path='/admin_side_products' element={<AdminSideProducts />} />
         <Route path="/admin_side_add_product" element={<AdminSideAddProducts/>}/>
         <Route path="/admin_side_product_edit_page" element={<AdminSideProductEditPage/>}/>
+        <Route path="/products/:id" element={<SingleProducts/>}/>
 
     </Routes>
   )

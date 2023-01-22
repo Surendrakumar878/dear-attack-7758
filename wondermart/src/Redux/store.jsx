@@ -12,7 +12,7 @@ import thunk from 'redux-thunk'
 const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
 
 
-const rootReducer = combineReducers({authReducer, adminReducer,cartReducer})
+const rootReducer = combineReducers({authReducer,productReducer, adminReducer,cartReducer})
 
 
 

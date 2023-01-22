@@ -13,7 +13,7 @@ import {
 const initialState = {
   AllProducts: { loading: false, error: false },
   Product: { loading: false, error: false },
-  data: [],
+  data:[],
   singleData: [],
   carts: [],
   loading: false,

@@ -32,9 +32,10 @@ import React, { useEffect, useState } from "react";
 // import { ModalBody, ModalHeader } from "react-bootstrap";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { login, signup } from "../../Redux/authReducer/Action";
 export const Navbar = () => {
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,23 +75,22 @@ export const Navbar = () => {
     "Baby Care",
   ]);
   //handleSubmitSignup
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) =>{
     e.preventDefault();
-    const payload = {
+    const payload={
       email,
       password,
     };
     dispatch(login(payload));
-    console.log(payload);
-    toast({
+   toast({
       title: "Welcome",
       description: "You are now logged in.",
       status: "success",
       duration: 9000,
       isClosable: true,
     });
-    onClose();
-  };
+   onClose();
+};
   const handleSubmitSignup = (e) => {
     e.preventDefault();
     const payload = {
@@ -272,7 +272,7 @@ export const Navbar = () => {
 
 
   useEffect(()=>{
-axios.get("https://rich-red-indri-tie.cyclic.app/products/q",{
+axios.get("https://rich-red-indri-tie.cyclic.app/products/",{
   params:{
     category:"bakery"
   }
@@ -448,12 +448,18 @@ axios.get("https://rich-red-indri-tie.cyclic.app/products/q",{
                   )}
                 </Box>
                 <Box display={"flex"}>
+
+                  
                   <Button
                     _hover={{ bg: "grey" }}
                     bg={"none"}
                     onClick={() => {
                       localStorage.setItem("token", "t");
                       localStorage.setItem("adminkey", "t");
+                      setUser(!user)
+                      alert("logout")
+                      navigate("/")
+                      // onClose();
                     }}
                   >
                     Logout
@@ -463,13 +469,14 @@ axios.get("https://rich-red-indri-tie.cyclic.app/products/q",{
             </Box>
           )}
           <Box w="5%" display={{ lg: "block", sm: "none", md: "none" }}>
-            <Box w="100%" bg={"red.300"} borderRadius={"8px"}>
+          <NavLink to="/cart"> <Box w="100%" bg={"red.300"} borderRadius={"8px"}>
               {" "}
               <Center p="15px">
                 {" "}
                 <FaShoppingBasket style={{ color: "white" }} />
               </Center>{" "}
             </Box>
+            </NavLink>
           </Box>
         </Box>
 

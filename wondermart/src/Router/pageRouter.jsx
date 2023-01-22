@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes,Route} from 'react-router-dom'
 import Cart from '../Components/Cart'
-import HomePage from '../Components/HomePage'
+import HomePage from '../Components/Design/HomePage'
 // import { Navbar } from '../Components/navabar/Navbar'
 import Products from '../Components/Products'
 import { AdminSideHomePage } from "../page/AdminPages/AdminSideHomePage";
@@ -11,7 +11,9 @@ import { AdminSideProductEditPage } from "../page/AdminPages/AdminSideProductEdi
 import  Login from '../page/login/Login'
 import { Signup } from '../page/signup/Signup'
 import Navbar from '../Components/navabar/Subnavbar'
-import SingleProducts from '../page/Products/SingleProducts'
+
+import PrivateRouter from '../Components/PrivateRouter/PrivateRouter'
+
 
 function PageRouter() {
   return (
@@ -21,7 +23,7 @@ function PageRouter() {
         {/* <Route path="/nav" element={<Navbar/>}/> */}
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/cart" element={ <PrivateRouter><Cart/></PrivateRouter> }/>
         <Route path="/products" element={<Products/>}/>
         <Route path="/admin_home_page" element={<AdminSideHomePage />} />
         <Route path='/admin_side_products' element={<AdminSideProducts />} />

@@ -1,12 +1,19 @@
+import { ArrowRightIcon, ChevronRightIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
+  Avatar,
   Box,
   Button,
   Center,
   FormControl,
   FormLabel,
+  IconButton,
   Image,
   Input,
   Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -19,14 +26,16 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
 // import { Button } from "bootstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { ModalBody, ModalHeader } from "react-bootstrap";
 import { FaSearch, FaShoppingBasket } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { login, signup } from "../../Redux/authReducer/Action";
 export const Navbar = () => {
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,49 +44,53 @@ export const Navbar = () => {
   const [spassword, setSPassword] = useState("");
   const [on, setOn] = useState(false);
   const [one, setOne] = useState(false);
+  const [user, setUser] = useState(false);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const[category2,setCategory2]=useState(['Feeding & Nursing',
-  'Mothers & Maternity',
-  'Combs, Brushes, Clippers',
-  'Other Baby Accessories',
-  'Soothers & Teethers',])
-  const[category3,setCategory3]=useState(['Feeding & Nursing',
-  'Mothers & Maternity',
-  'Combs, Brushes, Clippers',
-  'Other Baby Accessories',
-  'Soothers & Teethers'])
-  const[category,setCategory]=useState([
+  const [category2, setCategory2] = useState([
+    "Feeding & Nursing",
+    "Mothers & Maternity",
+    "Combs, Brushes, Clippers",
+    "Other Baby Accessories",
+    "Soothers & Teethers",
+  ]);
+  const [category3, setCategory3] = useState([
+    "Feeding & Nursing",
+    "Mothers & Maternity",
+    "Combs, Brushes, Clippers",
+    "Other Baby Accessories",
+    "Soothers & Teethers",
+  ]);
+  const [category, setCategory] = useState([
     "Fruits & Vegetables",
-"Foodgrains, Oil & Masala",
-"Bakery, Cakes & Dairy",
-"Beverages",
-"Snacks & Branded Foods",
-"Beauty & Hygiene",
-"Cleaning & Household",
-"Kitchen, Garden & Pets",
-"Eggs, Meat & Fish",
-"Gourmet & World Food",
-"Baby Care",
-  ])
+    "Foodgrains, Oil & Masala",
+    "Bakery, Cakes & Dairy",
+    "Beverages",
+    "Snacks & Branded Foods",
+    "Beauty & Hygiene",
+    "Cleaning & Household",
+    "Kitchen, Garden & Pets",
+    "Eggs, Meat & Fish",
+    "Gourmet & World Food",
+    "Baby Care",
+  ]);
   //handleSubmitSignup
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) =>{
     e.preventDefault();
-    const payload = {
+    const payload={
       email,
       password,
     };
     dispatch(login(payload));
-    console.log(payload);
-    toast({
+   toast({
       title: "Welcome",
       description: "You are now logged in.",
       status: "success",
       duration: 9000,
       isClosable: true,
     });
-    onClose();
-  };
+   onClose();
+};
   const handleSubmitSignup = (e) => {
     e.preventDefault();
     const payload = {
@@ -98,264 +111,392 @@ export const Navbar = () => {
   };
   // console.log(email, password);
 
-const subnav=(i)=>{
-if(i==="Fruits & Vegetables"){
-return setCategory2([
-  
-"  Cuts & Sprouts",
-"Exotic Fruits & Veggies",
-"Flower Bouquets, Bunches",
-"Fresh Fruits",
-"Fresh Vegetables",
-"Herbs & Seasonings",
-])
-}
-else if(i==="Foodgrains, Oil & Masala"){
-  // eslint-disable-next-line no-sparse-arrays
-  return setCategory2([
-    
-    ,'Atta, Flours & Sooji'
-    ,'Dals & Pulses'
-    ,'Dry Fruits'
-    ,'Edible Oils & Ghee'
-    ,'Masalas & Spices'
-
-
-  
-  ])
-  }
-  else if(i==="Beverages"){
-    return setCategory2(['Baby Accessories',
-    'Baby Bath & Hygiene',
-    'Baby Food & Formula',
-    'Diapers & Wipes',
-    'Feeding & Nursing',
-    ])
-    }
-    else if(i==="Bakery, Cakes & Dairy"){
+  const subnav = (i) => {
+    if (i === "Fruits & Vegetables") {
       return setCategory2([
-        
-        'Bakery Snacks'
-        ,'Breads & Buns'
-        ,'Cakes & Pastries'
-        ,'Cookies, Rusk & Khari'
-        ,'Dairy'
-
-
-        
-        ])
-      }
-      else if(i==="Snacks & Branded Foods"){
-        return setCategory2(['Baby Accessories',
-        'Baby Bath & Hygiene',
-        'Baby Food & Formula',
-        'Diapers & Wipes',
-        ])
-        }
-        else if(i==="Beauty & Hygiene"){
-          return setCategory2([
-            'Biscuits & Cookies'
-            ,'Breakfast Cereals'
-            ,'Chocolates & Candies'
-            ,'Frozen Veggies & Snacks'
-            ,'Indian Mithai'
-           , 'Noodle, Pasta, Vermicelli'
-            ,'Pickles & Chutney'
-           ])
-          }
-          else if(i==="Baby Care"){
-            return setCategory2([
-              
-'Baby Accessories',
-'Baby Bath & Hygiene',
-'Baby Food & Formula',
-'Diapers & Wipes',
-
-
-              ])
-            }
-            else if(i==="Cleaning & Household"){
-              // eslint-disable-next-line no-sparse-arrays
-              return setCategory2(['Baby Accessories',
-              'Baby Bath & Hygiene',
-              'Baby Food & Formula',
-              'Diapers & Wipes',
-              'Feeding & Nursing',
-             ,])
-              }
-
-}
-const subnav1=(i)=>{
-  if(i==="Cuts & Sprouts"){
-  return setCategory3([
-    
-  
-  "Herbs & Seasonings",
-  "Organic Fruits & Vegetables",
-  "Cut & Peeled Veggies",
-  "Cut Fruit, Tender Coconut",
-  "Fresh Salads & Sprouts",
-  
-  
-  ])
-  }
-  else if(i==="Foodgrains, Oil & Masala"){
-    // eslint-disable-next-line no-sparse-arrays
-    return setCategory3([
-      
-      ,'Atta, Flours & Sooji'
-      ,'Dals & Pulses'
-      ,'Dry Fruits'
-      ,'Edible Oils & Ghee'
-      ,'Masalas & Spices'
-      ,'Organic Staples'
-      ,'Rice & Rice Products'
-      ,'Salt, Sugar & Jaggery'
-      ,'Atta Whole Wheat'
-      ,'Rice & Other Flours'
-      ,'Sooji, Maida & Besan'
-  
-    
-    ])
+        "  Cuts & Sprouts",
+        "Exotic Fruits & Veggies",
+        "Flower Bouquets, Bunches",
+        "Fresh Fruits",
+        "Fresh Vegetables",
+        "Herbs & Seasonings",
+      ]);
+    } else if (i === "Foodgrains, Oil & Masala") {
+      // eslint-disable-next-line no-sparse-arrays
+      return setCategory2([
+        ,
+        "Atta, Flours & Sooji",
+        "Dals & Pulses",
+        "Dry Fruits",
+        "Edible Oils & Ghee",
+        "Masalas & Spices",
+      ]);
+    } else if (i === "Beverages") {
+      return setCategory2([
+        "Baby Accessories",
+        "Baby Bath & Hygiene",
+        "Baby Food & Formula",
+        "Diapers & Wipes",
+        "Feeding & Nursing",
+      ]);
+    } else if (i === "Bakery, Cakes & Dairy") {
+      return setCategory2([
+        "Bakery Snacks",
+        "Breads & Buns",
+        "Cakes & Pastries",
+        "Cookies, Rusk & Khari",
+        "Dairy",
+      ]);
+    } else if (i === "Snacks & Branded Foods") {
+      return setCategory2([
+        "Baby Accessories",
+        "Baby Bath & Hygiene",
+        "Baby Food & Formula",
+        "Diapers & Wipes",
+      ]);
+    } else if (i === "Beauty & Hygiene") {
+      return setCategory2([
+        "Biscuits & Cookies",
+        "Breakfast Cereals",
+        "Chocolates & Candies",
+        "Frozen Veggies & Snacks",
+        "Indian Mithai",
+        "Noodle, Pasta, Vermicelli",
+        "Pickles & Chutney",
+      ]);
+    } else if (i === "Baby Care") {
+      return setCategory2([
+        "Baby Accessories",
+        "Baby Bath & Hygiene",
+        "Baby Food & Formula",
+        "Diapers & Wipes",
+      ]);
+    } else if (i === "Cleaning & Household") {
+      // eslint-disable-next-line no-sparse-arrays
+      return setCategory2([
+        "Baby Accessories",
+        "Baby Bath & Hygiene",
+        "Baby Food & Formula",
+        "Diapers & Wipes",
+        "Feeding & Nursing",
+        ,
+      ]);
     }
-    else if(i==="Combs, Brushes, Clippers"){
-      return setCategory3(['Baby Accessories',
-     
-      'Combs, Brushes, Clippers',
-      'Other Baby Accessories',
-      'Soothers & Teethers',])
-      }
-      else if(i==="Bakery, Cakes & Dairy"){
-        // eslint-disable-next-line no-sparse-arrays
-        return setCategory3([
-          
-        
-          ,'Gourmet Breads'
-          ,'Ice Creams & Desserts'
-          ,'Non Dairy'
-          ,'Bread Sticks & Lavash'
-          ,'Breadcrumbs & Croutons'
-          ,'Cheese & Garlic Bread'
-  
-          
-          ])
-        }
-        else if(i==="Baby Accessories"){
-          return setCategory3(['Baby Accessories',
-          
-          'Mothers & Maternity',
-          'Combs, Brushes, Clippers',
-          'Other Baby Accessories',
-          'Soothers & Teethers',])
-          }
-          else if(i==="Biscuits & Cookies"){
-            // eslint-disable-next-line no-sparse-arrays
-            return setCategory3([
-              
-              ,'Cookies'
-              ,'Cream Biscuits & Wafers'
-              ,'Glucose & Milk Biscuits'
-              ,'Marie, Health, Digestive'
-              ,'Salted Biscuits'
-  
-              
-              
-              
-              
-              ])
-            }
-            else if(i==="Baby Accessories"){
-              return setCategory2([
-                
-  
-  'Feeding & Nursing',
-  'Mothers & Maternity',
-  'Combs, Brushes, Clippers',
-  'Other Baby Accessories',
-  'Soothers & Teethers',
-  
-                ])
-              }
-              else if(i==="Diapers & Wipes"){
-                return setCategory2(['Baby Accessories',
+  };
+  const subnav1 = (i) => {
+    if (i === "Cuts & Sprouts") {
+      return setCategory3([
+        "Herbs & Seasonings",
+        "Organic Fruits & Vegetables",
+        "Cut & Peeled Veggies",
+        "Cut Fruit, Tender Coconut",
+        "Fresh Salads & Sprouts",
+      ]);
+    } else if (i === "Foodgrains, Oil & Masala") {
+      // eslint-disable-next-line no-sparse-arrays
+      return setCategory3([
+        ,
+        "Atta, Flours & Sooji",
+        "Dals & Pulses",
+        "Dry Fruits",
+        "Edible Oils & Ghee",
+        "Masalas & Spices",
+        "Organic Staples",
+        "Rice & Rice Products",
+        "Salt, Sugar & Jaggery",
+        "Atta Whole Wheat",
+        "Rice & Other Flours",
+        "Sooji, Maida & Besan",
+      ]);
+    } else if (i === "Combs, Brushes, Clippers") {
+      return setCategory3([
+        "Baby Accessories",
 
-                'Mothers & Maternity',
-                'Combs, Brushes, Clippers',
-                'Other Baby Accessories',
-                'Soothers & Teethers',])
-                }
-  
+        "Combs, Brushes, Clippers",
+        "Other Baby Accessories",
+        "Soothers & Teethers",
+      ]);
+    } else if (i === "Bakery, Cakes & Dairy") {
+      // eslint-disable-next-line no-sparse-arrays
+      return setCategory3([
+        ,
+        "Gourmet Breads",
+        "Ice Creams & Desserts",
+        "Non Dairy",
+        "Bread Sticks & Lavash",
+        "Breadcrumbs & Croutons",
+        "Cheese & Garlic Bread",
+      ]);
+    } else if (i === "Baby Accessories") {
+      return setCategory3([
+        "Baby Accessories",
+
+        "Mothers & Maternity",
+        "Combs, Brushes, Clippers",
+        "Other Baby Accessories",
+        "Soothers & Teethers",
+      ]);
+    } else if (i === "Biscuits & Cookies") {
+      // eslint-disable-next-line no-sparse-arrays
+      return setCategory3([
+        ,
+        "Cookies",
+        "Cream Biscuits & Wafers",
+        "Glucose & Milk Biscuits",
+        "Marie, Health, Digestive",
+        "Salted Biscuits",
+      ]);
+    } else if (i === "Baby Accessories") {
+      return setCategory2([
+        "Feeding & Nursing",
+        "Mothers & Maternity",
+        "Combs, Brushes, Clippers",
+        "Other Baby Accessories",
+        "Soothers & Teethers",
+      ]);
+    } else if (i === "Diapers & Wipes") {
+      return setCategory2([
+        "Baby Accessories",
+
+        "Mothers & Maternity",
+        "Combs, Brushes, Clippers",
+        "Other Baby Accessories",
+        "Soothers & Teethers",
+      ]);
+    }
+  };
+
+  let token = localStorage.getItem("token") || [];
+  let admin = localStorage.getItem("adminkey") || [];
+
+
+
+  useEffect(()=>{
+axios.get("https://rich-red-indri-tie.cyclic.app/products/",{
+  params:{
+    category:"bakery"
   }
+}).then((e)=>{
+  console.log(e.data)
+})
+  },[])
 
-  let token=localStorage.getItem("token")||[]
   return (
-    <Box position="fixed" zIndex={1} w={{ lg: "100%", sm: "100%", md: "100%" }}>
-      <Box bg="white" p="20px" w="100%" color={"green"} m="auto">
-        <Box display="flex" w={"100%"}>
-          <Box w="20%" border="1px solid blue">
-            {" "}
-            <Image w="100%" h="5px" src="assets/logo/logo1.png" alt="" />{" "}
+    <Box position="fixed" zIndex={100} w={{ lg: "100%", sm: "100%", md: "100%" }}>
+      <Box bg="white" p="20px" w={{ lg: "100%", sm: "100%", md: "100%" }} color={"green"} m="auto">
+        <Box display="flex" w={{ lg: "100%", sm: "100%", md: "100%" }} alignItems="center">
+          <Box display={{ lg: "none", sm: "100%", md: "100%" }}>
+          <Menu>
+  <MenuButton
+    as={IconButton}
+    aria-label='Options'
+    icon={<HamburgerIcon />}
+    variant='outline'
+  />
+  <MenuList>
+  {category.map((el)=><MenuItem >
+      {el}
+    </MenuItem>)  }
+ 
+  </MenuList>
+</Menu>
           </Box>
-          <Box w="60%" border="1px solid green" borderRadius={"8px"}>
-            <Box display={"flex"} w="100%" p="10px">
-              <FaSearch
-                style={{
-                  fontSize: "15px",
-                  marginTop: "5px",
+          <Box w="20%">
+            {" "}
+            <Image w={{ lg: "60%", sm: "80%", md: "80%" }} ml={{ lg: "100px", sm: "010px", md: "010px" }} src="assets/logo/logo1.png" alt="" />
+            {/* <Text size={20} color={"black"} >wondermart</Text>  */}{" "}
+          </Box>
+          <Box w="60%">
+            <Box w={{ lg: "100%", sm: "100%", md: "100%" }} border="1px solid green" borderRadius={"8px"}>
+              <Box display={"flex"} w={{ lg: "100%", sm: "100%", md: "100%" }} p="10px">
+                <FaSearch
+                  style={{
+                    fontSize: "15px",
+                    marginTop: "5px",
 
-                  // paddingTop:"10px"
-                }}
-              />{" "}
-              <Input
-                fontSize={"15px"}
-                pl={5}
-                variant="unstyled"
-                placeholder="Search Product..."
-              />
-            </Box>{" "}
+                    // paddingTop:"10px"
+                  }}
+                />{" "}
+                <Input
+                  fontSize={"15px"}
+                  pl={5}
+                  variant="unstyled"
+                  placeholder="Search Product..."
+                />
+              </Box>{" "}
+            </Box>
           </Box>
-          <Box w="20%" color="white">
+          <Box w={{ lg: "20%", sm: "20%", md: "20%" }} display={{ lg:"block", sm: "none", md: "none" }} color="white">
             {" "}
-            <Box bg={"grey"} borderRadius={"8px"} w="80%" ml="10px">
-              <Text>time</Text>
-              <Text>adress</Text>
+            <Box
+              fontSize={{ lg: "13px", sm: "13px", md: "13px" }}
+              pl="13px"
+              pt="2px"
+              pb="2px"
+              bg={"#f7f7f7"}
+              color="black"
+              borderRadius={"8px"}
+              w={{ lg: "60%", sm: "60%", md: "60%" }}
+              ml="10px"
+            >
+              <Text>Get it in 12 hrs</Text>
+              <Text>Home: Mahalakshmi ...</Text>
             </Box>{" "}
           </Box>
           <Box
-            w="10%"
-            p={"8px"}
+            className="drop"
+            w={{ lg: "10%", sm: "10%", md: "10%" }}
+            // p={"8px"}
+            textAlign={"center"}
             borderRadius={"8px"}
-            bg="black"
-            color={"white"}
+            // bg="black"
+            // color={"white"}
           >
-            {
-              <Text onClick={onOpen}>
-                {token.length> 2
-                  ? "logout"
-                  : "Login/Signup"}
-              </Text>
-            }
+            {token.length > 10 ? (
+              // <Image src=""    onClick={() => setUser(!user)}/>
+              <Avatar
+                onClick={() => setUser(!user)}
+                src="https://example.com/logo.png"
+                size={{ lg: "md", sm: "md", md: "md" }}
+                borderWidth="3px"
+                borderColor="blue.500"
+                boxShadow="md"
+                rounded="full"
+                mr="80px"
+              />
+            ) : (
+              <button fontSize={{ lg: "md", sm: "md", md: "md" }} bg="black" color="black" onClick={onOpen} mt="20px">
+                Login/Signup
+              </button>
+            )}
           </Box>
-          <Box w="5%" ml="10px" bg={"red.300"} borderRadius={"8px"}>
-            {" "}
-            <Center pt="10px">
+
+          {user && (
+            <Box
+              w="50px"
+              h="350px"
+              position="absolute"
+              top="111"
+              right="200"
+              bottom="0"
+              // left="250"
+              zIndex="99999999999999"
+              // bg="teal"
+              display={"flex"}
+              justifyContent="space-between"
+              mt="10px"
+              // border="1px solid green"
+            >
+              <Box
+                borderRadius={"8px"}
+                bg="black"
+                // borderLeftRadius="8px"
+                w="16rem"
+                color={"white"}
+                display={"flex"}
+                flexDirection="column"
+                p="10px"
+              >
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Account
+                  </Button>
+                </Box>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Basket
+                  </Button>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    0 Item
+                  </Button>
+                </Box>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Orders
+                  </Button>
+
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    ₹0
+                  </Button>
+                </Box>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Smart Basket
+                  </Button>
+                </Box>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    My Wallet
+                  </Button>
+                </Box>
+                <Box display={"flex"}>
+                  <Button _hover={{ bg: "grey" }} bg={"none"}>
+                    Contact Us
+                  </Button>
+                </Box>
+                <Box display={"flex"}>
+                  {admin.length >= 10 ? (
+                    <NavLink to="/admin_home_page">
+                      <Button _hover={{ bg: "grey" }} bg={"none"}>
+                        Admin
+                      </Button>
+                    </NavLink>
+                  ) : (
+                    <Button _hover={{ bg: "grey" }} bg={"none"}>
+                      user
+                    </Button>
+                  )}
+                </Box>
+                <Box display={"flex"}>
+
+                  
+                  <Button
+                    _hover={{ bg: "grey" }}
+                    bg={"none"}
+                    onClick={() => {
+                      localStorage.setItem("token", "t");
+                      localStorage.setItem("adminkey", "t");
+                      setUser(!user)
+                      alert("logout")
+                      navigate("/")
+                      // onClose();
+                    }}
+                  >
+                    Logout
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
+          )}
+          <Box w="5%" display={{ lg: "block", sm: "none", md: "none" }}>
+          <NavLink to="/cart"> <Box w="100%" bg={"red.300"} borderRadius={"8px"}>
               {" "}
-              <FaShoppingBasket style={{ color: "white" }} />
-            </Center>{" "}
+              <Center p="15px">
+                {" "}
+                <FaShoppingBasket style={{ color: "white" }} />
+              </Center>{" "}
+            </Box>
+            </NavLink>
           </Box>
         </Box>
 
         {/* second Navbar */}
-{/* ________________------------------------second Navbar ---------------------------------------------- */}
+        {/*-----------------------second Navbar ---------------------------------------------- */}
         <Box
           position="relative"
-          display="flex"
-          w={"100%"}
+          display={{ lg: "flex", sm:"none", md:"none" }}
+          w={{ lg: "100%", sm: "100%", md: "100%" }}
           justifyContent="space-around"
           color={"black"}
         >
-          <Button onClick={() => setOn(!on)} bg="#5e9400"  _hover={{ bg:'#5e9400'}} color={"white"}>
-            Shop By category 
+          <Button
+            onClick={() => setOn(!on)}
+            bg="#5e9400"
+            _hover={{ bg: "#5e9400" }}
+            color={"white"}
+           
+          >
+            Shop By category
           </Button>
 
           <Button color={"black"} variant="link">
@@ -374,21 +515,21 @@ const subnav1=(i)=>{
             fresh-vegetables
           </Button>
           <Button variant="link" textDecoration={"none"} outline="none">
-            {">>"}
+         <ArrowRightIcon boxSize={3} />
           </Button>
         </Box>
-{/* ________________------------------------dropdown---------------------------------------------- */}
+        {/* ________________------------------------dropdown---------------------------------------------- */}
 
         {on && (
           <Box
             w="750px"
-            h="300px"
+            h="400px"
             position="absolute"
             top="111"
             right="0"
             bottom="0"
             left="210"
-            zIndex="9900000000"
+            zIndex={100}
             // bg="teal"
             display={"flex"}
             justifyContent="space-between"
@@ -397,27 +538,26 @@ const subnav1=(i)=>{
             borderRadius={"8px"}
           >
             <Box
+              h="400px"
               borderLeftRadius="8px"
               w="16rem"
               color={"white"}
               bg="black"
               display={"flex"}
               flexDirection="column"
-             
               p="10px"
             >
-
-              {category.map((i)=>
-               <Button onMouseEnter={() => {
-              
-              subnav(i)
-              }} 
-              _hover={{ bg:'grey'}}
-              bg={"none"}
-              >
-              {i}</Button>
-              )}
-              
+              {category.map((i) => (
+                <Button
+                  onMouseEnter={() => {
+                    subnav(i);
+                  }}
+                  _hover={{ bg: "grey" }}
+                  bg={"none"}
+                >
+                  {i}
+                </Button>
+              ))}
             </Box>
             <Box
               w="16rem"
@@ -427,15 +567,16 @@ const subnav1=(i)=>{
               p="10px"
               color={"black"}
             >
-              {category2.map((i)=> <Button
-              
-              onMouseEnter={() => {
-              
-                subnav1(i)
-                }} 
-              bg="none">{i}</Button>)}
-             
-              
+              {category2.map((i) => (
+                <Button
+                  onMouseEnter={() => {
+                    subnav1(i);
+                  }}
+                  bg="none"
+                >
+                  {i}
+                </Button>
+              ))}
             </Box>
             <Box
               borderRadius={"8px"}
@@ -446,17 +587,18 @@ const subnav1=(i)=>{
               flexDirection="column"
               p="10px"
             >
-            {category3.map((i)=> <Button bg="none">{i}</Button>)}
-             
+              {category3.map((i) => (
+                <Button bg="none">{i}</Button>
+              ))}
             </Box>
           </Box>
         )}
       </Box>
-{/* ________________------------------------modal---------------------------------------------- */}
+      {/* ________________------------------------modal---------------------------------------------- */}
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        {one? (
+        {one ? (
           <ModalContent>
             <ModalHeader>Login</ModalHeader>
             <ModalCloseButton />

@@ -19,7 +19,7 @@ let arr = [
     cost: "₹65.96",
     kg:"75g",
     rating:"5 Ratings",
-    off:"10% OFF"
+    off:"18% OFF"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40020805_4-himalaya-baby-shampoo-gentle-baby.jpg?tr=w-1920,q=80",
@@ -28,7 +28,7 @@ let arr = [
     cost: "₹240.5",
     kg:"400ml-Bottle",
     rating:"15 Ratings",
-    off:"10% OFF"
+    off:"29% OFF"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40085808_10-nestle-ceregrow-baby-cereal-multigrain-with-milk-fruits-from-2-5-years-rich-in-iron.jpg?tr=w-1920,q=80",
@@ -38,7 +38,7 @@ let arr = [
     cost: "₹300.5",
     kg:"300g-Box",
     rating:"1488 Ratings",
-    off:"10% OFF"
+    off:"16% OFF"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40102625_2-mamaearth-baby-shampoo-gentle-cleansing-0-5-years.jpg?tr=w-1920,q=80",
@@ -58,7 +58,7 @@ let arr = [
     cost: "₹154.6",
     kg:"300g-Buy 3 Get 1 Free",
     rating:"1036 Ratings",
-    off:"10% OFF"
+    off:"38% OFF"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40113202_3-sebamed-baby-cleansing-bar.jpg?tr=w-1920,q=80",
@@ -68,7 +68,7 @@ let arr = [
     cost: "₹361.5",
     kg:"150g",
     rating:"119 Ratings",
-    off:"10% OFF"
+    off:"18% OFF"
   },
   {
     url: "https://www.bigbasket.com/media/uploads/p/m/40129677_9-pampers-diaper-pants-extra-large.jpg?tr=w-1920,q=80",
@@ -78,7 +78,7 @@ let arr = [
     cost: "₹869",
     kg:"56pcs",
     rating:"61 Ratings",
-    off:"10% OFF"
+    off:"22% OFF"
   },
 ];
 

@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Center,
@@ -264,11 +265,14 @@ export const Navbar = () => {
     <Box position="fixed" zIndex={1} w={{ lg: "100%", sm: "100%", md: "100%" }}>
       <Box bg="white" p="20px" w="100%" color={"green"} m="auto">
         <Box display="flex" w={"100%"}>
-          <Box w="20%" border="1px solid blue">
+          <Box w="20%"  >
             {" "}
-            <Image w="100%" h="5px" src="assets/logo/logo1.png" alt="" />{" "}
+            <Image w="60%" ml='100px' src="assets/logo/logo1.png" alt="" />
+            {/* <Text size={20} color={"black"} >wondermart</Text>  */}
+            {" "}
           </Box>
-          <Box w="60%" border="1px solid green" borderRadius={"8px"}>
+          <Box w="60%"> 
+          <Box w="100%" border="1px solid green" borderRadius={"8px"}>
             <Box display={"flex"} w="100%" p="10px">
               <FaSearch
                 style={{
@@ -286,11 +290,12 @@ export const Navbar = () => {
               />
             </Box>{" "}
           </Box>
+          </Box>
           <Box w="20%" color="white">
             {" "}
-            <Box pl="10px" bg={"grey"} borderRadius={"8px"} w="80%" ml="10px">
-              <Text>time</Text>
-              <Text>adress</Text>
+            <Box fontSize={"13px"} pl="13px" pt="2px" pb="2px" bg={"#f7f7f7"} color="black" borderRadius={"8px"} w="60%" ml="10px">
+              <Text>Get it in 12 hrs</Text>
+              <Text>Home: Mahalakshmi ...</Text>
             </Box>{" "}
           </Box>
           <Box
@@ -299,26 +304,36 @@ export const Navbar = () => {
             // p={"8px"}
             textAlign={"center"}
             borderRadius={"8px"}
-            bg="black"
-            color={"white"}
+            // bg="black"
+            // color={"white"}
           >
             {token.length > 10 ? (
-              <Text onClick={() => setUser(!user)}>log</Text>
+              // <Image src=""    onClick={() => setUser(!user)}/>
+              <Avatar
+onClick={() => setUser(!user)}
+src="https://example.com/logo.png"
+  size="md"
+  borderWidth="3px"
+  borderColor="blue.500"
+  boxShadow="md"
+  rounded="full"
+  mr="80px"
+/>
             ) : (
-              <button onClick={onOpen}>Login/Signup</button>
+              <button bg="black" onClick={onOpen}>Login/Signup</button>
             )}
           </Box>
 
           {user && (
             <Box
               w="50px"
-              h="300px"
+              h="350px"
               position="absolute"
               top="111"
               right="200"
               bottom="0"
               // left="250"
-              zIndex="99000000000"
+              zIndex="99999999999999"
               // bg="teal"
               display={"flex"}
               justifyContent="space-between"
@@ -370,9 +385,9 @@ export const Navbar = () => {
                 </Button>
                 </Box>
                 <Box display={"flex"} >
-                {admin.length>10?<Button _hover={{ bg: "grey" }} bg={"none"}>
+                {admin.length>=10? <NavLink to="/admin_home_page"><Button _hover={{ bg: "grey" }} bg={"none"}>
                   Admin
-                </Button>:<Button _hover={{ bg: "grey" }} bg={"none"}>
+                </Button></NavLink> :<Button _hover={{ bg: "grey" }} bg={"none"}>
                   user
                 </Button>}
                 </Box>
@@ -386,14 +401,16 @@ export const Navbar = () => {
               </Box>
             </Box>
           )}
-
-          <Box w="5%" ml="10px" bg={"red.300"} borderRadius={"8px"}>
+          <Box w="5%">
+          <Box w="100%"  bg={"red.300"} borderRadius={"8px"}>
             {" "}
-            <Center pt="10px">
+            <Center p="15px">
               {" "}
               <FaShoppingBasket style={{ color: "white" }} />
             </Center>{" "}
           </Box>
+          </Box>
+
         </Box>
 
         {/* second Navbar */}

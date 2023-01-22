@@ -15,7 +15,7 @@ function App() {
      <Checkout/>
      <Pay/> */}
 
-      <Box w="100%" bg="white" pb="120px">
+      <Box w="100%" bg="white" pb="160px">
         <Navbar />{" "}
       </Box>
       <PageRouter />

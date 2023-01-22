@@ -27,6 +27,7 @@ export const login = (payload) => (dispatch) => {
         .then((res) => {
             localStorage.setItem("token",res.data.token)
             localStorage.setItem("adminkey",res.data.adminID)
+            localStorage.setItem("userkey",res.data.userKey)
     console.log(res.data)
             dispatch(postLoginSuccess(res.data.token))
         })

@@ -23,6 +23,7 @@ const Login = () => {
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.token);
+            localStorage.setItem("userKey", res.userKey);
         })
         .catch(err => console.log(err));
     };

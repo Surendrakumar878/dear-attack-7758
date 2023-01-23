@@ -37,7 +37,7 @@ This project is a web application for E-Commerce mostly focused on the functiona
 
 ## Demo
 
-deployed link for demo:- https://coolmartz.netlify.app/
+deployed link for demo:- https://wondermart.netlify.app/
 
 
 ## Technologies
@@ -55,7 +55,9 @@ deployed link for demo:- https://coolmartz.netlify.app/
 - CSS
 ## ScreenShots
 
-![]()
+![home page](https://i.ibb.co/RDGrQq7/Screen-Shot-2023-01-23-at-3-53-06-PM.png)
+
+![product page](https://i.ibb.co/S3vyS3L/Screen-Shot-2023-01-23-at-3-53-47-PM.png)
 
 ## Status
 
